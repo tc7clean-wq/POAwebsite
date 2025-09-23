@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerOfAttorneyNOW - Emergency POA in 15 Minutes</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+        .emergency-banner { background: #dc2626; color: white; padding: 12px; text-align: center; font-weight: bold; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.9; } }
+        nav { background: white; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .nav-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .hero { background: linear-gradient(135deg, #eff6ff, #dbeafe); padding: 60px 20px; text-align: center; }
+        h1 { font-size: 48px; margin-bottom: 20px; }
+        .blue { color: #2563eb; }
+        .subtitle { font-size: 20px; color: #666; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .buttons { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
+        .btn { padding: 16px 32px; border-radius: 8px; font-size: 18px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; transition: all 0.3s; }
+        .btn-emergency { background: #dc2626; color: white; }
+        .btn-emergency:hover { transform: scale(1.05); }
+        .pricing { padding: 60px 20px; background: #f9fafb; }
+        .price-box { background: white; border: 2px solid #dc2626; padding: 30px; border-radius: 12px; max-width: 400px; margin: 20px auto; }
+        .price { font-size: 48px; font-weight: bold; margin: 20px 0; }
+        @media (max-width: 768px) { 
+            h1 { font-size: 32px; } 
+            .buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Emergency Banner -->
+    <div class="emergency-banner">
+        🚨 EMERGENCY? Hospital needs POA now? Available 24/7 → Call (602) 555-0199
+    </div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">📄 POA<span style="color: #2563eb;">NOW</span></div>
+            <a href="tel:6025550199" style="background: #2563eb; color: white; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: bold;">
+                📞 (602) 555-0199
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Get Power of Attorney in <span class="blue">15 Minutes</span></h1>
+        <p class="subtitle">
+            Hospital emergency at 2 AM? We're here. Arizona certified notary available 24/7.
+            Bank & hospital accepted. No lawyers needed.
+        </p>
+        
+        <div class="buttons">
+            <button class="btn btn-emergency" onclick="startEmergencyPOA()">
+                🚨 EMERGENCY POA - $349 →
+            </button>
+        </div>
+        
+        <p style="margin-top: 20px;">✅ Arizona Certified &nbsp; ✅ Hospital Accepted &nbsp; ✅ Available Now</p>
+    </div>
+    
+    <!-- Pricing -->
+    <div class="pricing">
+        <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px;">Simple Pricing</h2>
+        
+        <div class="price-box">
+            <h3 style="font-size: 24px;">Emergency POA (Available Now)</h3>
+            <div class="price">$349</div>
+            <ul style="list-style: none; line-height: 2;">
+                <li>✓ Available 24/7/365</li>
+                <li>✓ Notary in 5 minutes</li>
+                <li>✓ Hospital packet included</li>
+                <li>✓ Complete in 15 minutes</li>
+            </ul>
+            <button class="btn btn-emergency" style="width: 100%; margin-top: 20px;" onclick="startEmergencyPOA()">
+                Start Now →
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Stripe Payment
+        const stripe = Stripe('pk_test_51234567890'); // YOU'LL GET THIS FROM STRIPE
+        
+        async function startEmergencyPOA() {
+            // For now, just collect info
+            const name = prompt('Your Name:');
+            const phone = prompt('Your Phone Number:');
+            const email = prompt('Your Email:');
+            
+            if (name && phone && email) {
+                alert(`Thank you! We'll call you at ${phone} within 5 minutes to complete your POA.`);
+                
+                // Send to your email (you'll add this later)
+                console.log('New Customer:', { name, phone, email });
+            }
+        }
+    </script>
+</body>
+</html>
