@@ -104,10 +104,10 @@
 
     <!-- Hero Section -->
     <div class="hero">
-        <h1>Emergency Power of Attorney<br><span class="blue">Online Notary 24/7</span></h1>
+        <h1>Arizona Online Notary Services<br><span class="blue">Available 24/7</span></h1>
         <p class="subtitle">
-            Hospital emergency at 2 AM? ICU needs POA documents signed immediately?
-            Arizona certified notaries available right now. Complete process in 15 minutes via video call.
+            Emergency POA, real estate closings, legal documents, contracts, and more.
+            Arizona certified notaries available right now. Complete any notarization in 15 minutes via secure video call.
         </p>
 
         <div class="trust-indicators">
@@ -116,7 +116,7 @@
                 <span>Live Notaries Available</span>
             </div>
             <div class="trust-item">
-                ✅ <span>Hospital & Bank Accepted</span>
+                ✅ <span>Bank & Legal Accepted</span>
             </div>
             <div class="trust-item">
                 🏆 <span>Arizona State Certified</span>
@@ -128,10 +128,10 @@
 
         <div class="buttons">
             <button class="btn btn-emergency" onclick="startEmergencyPOA()">
-                🚨 START EMERGENCY POA - $349
+                🚨 EMERGENCY POA - Start Now
             </button>
-            <button class="btn btn-secondary" onclick="showHowItWorks()">
-                📋 How It Works
+            <button class="btn btn-secondary" onclick="startRegularNotary()">
+                📋 Other Notary Services
             </button>
         </div>
     </div>
@@ -158,43 +158,126 @@
         </div>
     </div>
 
-    <!-- Pricing -->
+    <!-- Services Section -->
     <div class="pricing">
-        <h2 class="section-title">Emergency Notary Pricing</h2>
+        <h2 class="section-title">Complete Online Notary Services</h2>
+        <p style="text-align: center; margin-bottom: 50px; color: #6b7280; font-size: 18px;">Arizona certified notaries available 24/7 for all your document needs</p>
 
         <div class="price-grid">
             <div class="price-box">
-                <div class="popular-badge">MOST POPULAR</div>
-                <h3 class="price-title">Emergency POA Package</h3>
+                <div class="popular-badge">EMERGENCY</div>
+                <h3 class="price-title">Power of Attorney</h3>
                 <div class="price">$349</div>
                 <ul class="price-features">
                     <li><span class="check">✓</span> Available 24/7/365</li>
-                    <li><span class="check">✓</span> Live notary in 5 minutes</li>
+                    <li><span class="check">✓</span> Hospital emergency ready</li>
                     <li><span class="check">✓</span> Complete in 15 minutes</li>
-                    <li><span class="check">✓</span> Hospital-ready documents</li>
+                    <li><span class="check">✓</span> HIPAA compliant</li>
                     <li><span class="check">✓</span> Digital & printed copies</li>
-                    <li><span class="check">✓</span> Arizona state certified</li>
-                    <li><span class="check">✓</span> HIPAA compliant process</li>
                 </ul>
                 <button class="btn btn-emergency" style="width: 100%; margin-top: 20px;" onclick="startEmergencyPOA()">
-                    🚨 Start Emergency Process
+                    🚨 Emergency POA
+                </button>
+            </div>
+
+            <div class="price-box">
+                <h3 class="price-title">Real Estate Documents</h3>
+                <div class="price">$149</div>
+                <ul class="price-features">
+                    <li><span class="check">✓</span> Deeds & titles</li>
+                    <li><span class="check">✓</span> Mortgage documents</li>
+                    <li><span class="check">✓</span> Property transfers</li>
+                    <li><span class="check">✓</span> Refinance paperwork</li>
+                    <li><span class="check">✓</span> Same-day processing</li>
+                </ul>
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="startRegularNotary('real-estate')">
+                    📋 Real Estate Docs
+                </button>
+            </div>
+
+            <div class="price-box">
+                <h3 class="price-title">General Documents</h3>
+                <div class="price">$99</div>
+                <ul class="price-features">
+                    <li><span class="check">✓</span> Contracts & agreements</li>
+                    <li><span class="check">✓</span> Affidavits & sworn statements</li>
+                    <li><span class="check">✓</span> Business documents</li>
+                    <li><span class="check">✓</span> Travel authorization</li>
+                    <li><span class="check">✓</span> Standard processing</li>
+                </ul>
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="startRegularNotary('general')">
+                    📄 General Notary
+                </button>
+            </div>
+        </div>
+
+        <!-- Additional Services -->
+        <div style="background: white; padding: 40px; border-radius: 16px; margin: 50px auto; max-width: 800px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;">Additional Notary Services Available</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
+                <div>
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Legal Documents</h4>
+                    <ul style="list-style: none; color: #6b7280; line-height: 1.8;">
+                        <li>Wills & Estate Planning</li>
+                        <li>Living Wills</li>
+                        <li>Healthcare Directives</li>
+                        <li>Guardianship Papers</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Business Documents</h4>
+                    <ul style="list-style: none; color: #6b7280; line-height: 1.8;">
+                        <li>Articles of Incorporation</li>
+                        <li>Operating Agreements</li>
+                        <li>Partnership Agreements</li>
+                        <li>Employment Contracts</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: #2563eb; margin-bottom: 10px;">Personal Documents</h4>
+                    <ul style="list-style: none; color: #6b7280; line-height: 1.8;">
+                        <li>Travel Consent Letters</li>
+                        <li>Name Change Documents</li>
+                        <li>Identity Verification</li>
+                        <li>School Registration</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-secondary" onclick="startRegularNotary('custom')">
+                    💬 Discuss Custom Notarization
                 </button>
             </div>
         </div>
 
         <div style="text-align: center; margin-top: 40px; color: #6b7280;">
-            <p>💳 Secure payment via Stripe • 🔒 SSL encrypted • 📞 24/7 phone support</p>
+            <p>💳 Secure payment via Stripe • 🔒 SSL encrypted • 📞 24/7 phone support: (602) 555-0199</p>
         </div>
     </div>
 
-    <!-- Emergency POA Modal -->
-    <div id="poaModal" class="modal">
+    <!-- Universal Notary Modal -->
+    <div id="notaryModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>🚨 Emergency Power of Attorney - Start Now</h2>
-            <p style="color: #6b7280; margin-bottom: 30px;">Complete this secure form to connect with an Arizona certified notary within 5 minutes.</p>
+            <h2 id="modalTitle">🚨 Emergency Power of Attorney - Start Now</h2>
+            <p id="modalSubtitle" style="color: #6b7280; margin-bottom: 30px;">Complete this secure form to connect with an Arizona certified notary within 5 minutes.</p>
 
-            <form id="poaForm">
+            <form id="notaryForm">
+                <div class="form-group">
+                    <label for="serviceType">Notary Service Needed *</label>
+                    <select id="serviceType" class="form-control" required>
+                        <option value="">Select service type</option>
+                        <option value="emergency-poa">Emergency Power of Attorney - $349</option>
+                        <option value="real-estate">Real Estate Documents - $149</option>
+                        <option value="general">General Documents - $99</option>
+                        <option value="legal-will">Wills & Estate Planning - $199</option>
+                        <option value="business">Business Documents - $129</option>
+                        <option value="travel">Travel Authorization - $89</option>
+                        <option value="affidavit">Affidavits & Sworn Statements - $99</option>
+                        <option value="custom">Custom/Other (Call for Quote)</option>
+                    </select>
+                </div>
+
                 <div class="form-row">
                     <div class="form-group">
                         <label for="firstName">First Name *</label>
@@ -219,22 +302,29 @@
 
                 <div class="form-group">
                     <label for="location">Current Location *</label>
-                    <input type="text" id="location" class="form-control" placeholder="Hospital name or address" required>
+                    <input type="text" id="location" class="form-control" placeholder="City, State or specific address if emergency" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="urgencyGroup">
                     <label for="urgency">Urgency Level *</label>
                     <select id="urgency" class="form-control" required>
                         <option value="">Select urgency level</option>
-                        <option value="immediate">🔴 IMMEDIATE - Need POA right now</option>
+                        <option value="immediate">🔴 IMMEDIATE - Need notary right now</option>
                         <option value="within-hour">🟡 Within 1 hour</option>
                         <option value="within-day">🟢 Within today</option>
+                        <option value="next-day">🟢 Within 24 hours</option>
+                        <option value="flexible">🟢 Flexible timing</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="details">Brief Details (Optional)</label>
-                    <textarea id="details" class="form-control" rows="3" placeholder="Brief description of your situation..."></textarea>
+                    <label for="documentType">Document Details</label>
+                    <textarea id="documentType" class="form-control" rows="3" placeholder="Brief description of documents to be notarized..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">Additional Information (Optional)</label>
+                    <textarea id="additionalInfo" class="form-control" rows="2" placeholder="Any special requirements or questions..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -257,8 +347,17 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-emergency" style="width: 100%; margin-top: 20px;">
-                    💳 Pay $349 & Connect with Notary Now
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="documents" required>
+                        <label for="documents">
+                            I have the documents ready to notarize or understand the documents will be provided during the session.
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-emergency" id="submitBtn" style="width: 100%; margin-top: 20px;">
+                    💳 Pay & Connect with Notary Now
                 </button>
 
                 <p style="text-align: center; margin-top: 16px; color: #6b7280; font-size: 14px;">
@@ -273,13 +372,70 @@
         const stripe = Stripe('pk_test_51234567890abcdef'); // Replace with your Stripe publishable key
 
         function startEmergencyPOA() {
-            document.getElementById('poaModal').style.display = 'block';
+            // Pre-select emergency POA service
+            document.getElementById('serviceType').value = 'emergency-poa';
+            updateModalForService('emergency-poa');
+            document.getElementById('notaryModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function startRegularNotary(serviceType = '') {
+            if (serviceType) {
+                document.getElementById('serviceType').value = serviceType;
+                updateModalForService(serviceType);
+            }
+            document.getElementById('notaryModal').style.display = 'block';
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            document.getElementById('poaModal').style.display = 'none';
+            document.getElementById('notaryModal').style.display = 'none';
             document.body.style.overflow = 'auto';
+        }
+
+        function updateModalForService(serviceType) {
+            const modalTitle = document.getElementById('modalTitle');
+            const modalSubtitle = document.getElementById('modalSubtitle');
+            const submitBtn = document.getElementById('submitBtn');
+            const urgencyGroup = document.getElementById('urgencyGroup');
+            const locationField = document.getElementById('location');
+
+            switch(serviceType) {
+                case 'emergency-poa':
+                    modalTitle.innerHTML = '🚨 Emergency Power of Attorney - Start Now';
+                    modalSubtitle.innerHTML = 'Complete this secure form to connect with an Arizona certified notary within 5 minutes.';
+                    submitBtn.innerHTML = '💳 Pay $349 & Connect with Notary Now';
+                    locationField.placeholder = 'Hospital name or current address';
+                    urgencyGroup.style.display = 'block';
+                    break;
+                case 'real-estate':
+                    modalTitle.innerHTML = '🏠 Real Estate Document Notarization';
+                    modalSubtitle.innerHTML = 'Professional notary services for deeds, mortgages, and property documents.';
+                    submitBtn.innerHTML = '💳 Pay $149 & Schedule Notary';
+                    locationField.placeholder = 'City, State';
+                    urgencyGroup.style.display = 'block';
+                    break;
+                case 'general':
+                    modalTitle.innerHTML = '📄 General Document Notarization';
+                    modalSubtitle.innerHTML = 'Notarization for contracts, affidavits, and general business documents.';
+                    submitBtn.innerHTML = '💳 Pay $99 & Schedule Notary';
+                    locationField.placeholder = 'City, State';
+                    urgencyGroup.style.display = 'block';
+                    break;
+                case 'custom':
+                    modalTitle.innerHTML = '💬 Custom Notarization Service';
+                    modalSubtitle.innerHTML = 'Describe your specific notarization needs for a custom quote.';
+                    submitBtn.innerHTML = '📞 Get Custom Quote & Connect';
+                    locationField.placeholder = 'City, State';
+                    urgencyGroup.style.display = 'block';
+                    break;
+                default:
+                    modalTitle.innerHTML = '📄 Online Notary Service';
+                    modalSubtitle.innerHTML = 'Connect with an Arizona certified notary for professional document services.';
+                    submitBtn.innerHTML = '💳 Pay & Connect with Notary';
+                    locationField.placeholder = 'City, State';
+                    urgencyGroup.style.display = 'block';
+            }
         }
 
         function showHowItWorks() {
@@ -288,25 +444,34 @@
 
         // Close modal when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('poaModal');
+            const modal = document.getElementById('notaryModal');
             if (event.target === modal) {
                 closeModal();
             }
         }
 
+        // Update modal when service type changes
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('serviceType').addEventListener('change', function(e) {
+                updateModalForService(e.target.value);
+            });
+        });
+
         // Form submission
-        document.getElementById('poaForm').addEventListener('submit', async function(e) {
+        document.getElementById('notaryForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
             // Collect form data
             const formData = {
+                serviceType: document.getElementById('serviceType').value,
                 firstName: document.getElementById('firstName').value,
                 lastName: document.getElementById('lastName').value,
                 email: document.getElementById('email').value,
                 phone: document.getElementById('phone').value,
                 location: document.getElementById('location').value,
                 urgency: document.getElementById('urgency').value,
-                details: document.getElementById('details').value,
+                documentType: document.getElementById('documentType').value,
+                additionalInfo: document.getElementById('additionalInfo').value,
                 timestamp: new Date().toISOString()
             };
 
@@ -322,11 +487,27 @@
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
                 // Success - redirect to video call or show success message
-                alert(`Thank you ${formData.firstName}! Your payment has been processed. A certified notary will call you at ${formData.phone} within 5 minutes.\n\nYour session ID: POA-${Date.now()}`);
+                const serviceTypes = {
+                    'emergency-poa': 'Emergency Power of Attorney',
+                    'real-estate': 'Real Estate Documents',
+                    'general': 'General Documents',
+                    'legal-will': 'Wills & Estate Planning',
+                    'business': 'Business Documents',
+                    'travel': 'Travel Authorization',
+                    'affidavit': 'Affidavits & Sworn Statements',
+                    'custom': 'Custom Service'
+                };
+
+                const serviceName = serviceTypes[formData.serviceType] || 'Notary Service';
+                const timeframe = formData.urgency === 'immediate' ? '5 minutes' :
+                                 formData.urgency === 'within-hour' ? '1 hour' :
+                                 formData.urgency === 'within-day' ? '4 hours' : '24 hours';
+
+                alert(`Thank you ${formData.firstName}! Your ${serviceName} request has been processed.\n\nA certified Arizona notary will contact you at ${formData.phone} within ${timeframe}.\n\nSession ID: ${formData.serviceType.toUpperCase()}-${Date.now()}\n\nCheck your email for video call instructions.`);
 
                 // Close modal and reset form
                 closeModal();
-                document.getElementById('poaForm').reset();
+                document.getElementById('notaryForm').reset();
 
                 // In a real implementation, you'd:
                 // 1. Process payment with Stripe
@@ -336,7 +517,7 @@
                 // 5. Redirect to video call platform
 
             } catch (error) {
-                alert('Payment failed. Please try again or call (602) 555-0199 for immediate assistance.');
+                alert('Payment failed. Please try again or call (602) 555-0199 for immediate assistance.\n\nFor emergencies, our phone support can process payments over the phone.');
             } finally {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
