@@ -23,13 +23,256 @@
             padding: 0 20px;
         }
 
-        /* Progress Bar */
+        /* Header Styles */
+        .compliance-banner {
+            background: #fef3c7;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 2px solid #fbbf24;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logo span:first-child {
+            color: #3b82f6;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16,185,129,0.3);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239,68,68,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3b82f6;
+            color: #3b82f6;
+        }
+
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .price-card {
+            text-align: center;
+            position: relative;
+            border: 2px solid #e5e7eb;
+        }
+
+        .price-card.featured {
+            border-color: #3b82f6;
+        }
+
+        .price-card .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #3b82f6;
+            margin: 20px 0;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-gray {
+            background: #f9fafb;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Page Management */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Booking Flow Specific Styles */
         .progress-container {
             background: white;
             padding: 30px 0;
             border-bottom: 1px solid #e5e7eb;
             position: sticky;
-            top: 0;
+            top: 60px;
             z-index: 100;
         }
 
@@ -82,18 +325,6 @@
             background: #10b981;
         }
 
-        .progress-step-label {
-            font-size: 12px;
-            color: #6b7280;
-            text-align: center;
-        }
-
-        .progress-step.active .progress-step-label {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-
-        /* Form Styles */
         .booking-container {
             max-width: 800px;
             margin: 40px auto;
@@ -130,12 +361,6 @@
             font-size: 16px;
         }
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
         .checkbox-group {
             display: flex;
             align-items: start;
@@ -151,12 +376,6 @@
             margin-top: 2px;
         }
 
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
         .radio-option {
             display: flex;
             align-items: start;
@@ -165,6 +384,7 @@
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
+            margin-bottom: 15px;
         }
 
         .radio-option:hover {
@@ -178,983 +398,311 @@
             margin-top: 2px;
         }
 
-        .radio-option.selected {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-
-        .service-price {
-            font-size: 24px;
-            font-weight: bold;
-            color: #3b82f6;
-            margin-top: 5px;
-        }
-
-        .upload-area {
-            border: 2px dashed #d1d5db;
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .upload-area:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-
-        .upload-area.dragging {
-            border-color: #3b82f6;
-            background: #dbeafe;
-        }
-
-        .upload-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            border: none;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: #3b82f6;
+        /* Footer */
+        footer {
+            background: #1f2937;
             color: white;
-        }
-
-        .btn-primary:hover {
-            background: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
-        }
-
-        .btn-secondary {
-            background: #f3f4f6;
-            color: #374151;
-            margin-right: 10px;
-        }
-
-        .btn-secondary:hover {
-            background: #e5e7eb;
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .form-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .agreement-box {
-            background: #fef3c7;
-            border: 2px solid #fbbf24;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .agreement-text {
-            max-height: 300px;
-            overflow-y: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .price-summary {
-            background: #f0f9ff;
-            border: 2px solid #3b82f6;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .price-summary h3 {
-            color: #3b82f6;
-            margin-bottom: 15px;
-        }
-
-        .price-line {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .price-total {
-            font-size: 24px;
-            font-weight: bold;
-            color: #3b82f6;
-            border-top: 2px solid #3b82f6;
-            padding-top: 10px;
-            margin-top: 10px;
-        }
-
-        .success-message {
-            background: #d1fae5;
-            border: 2px solid #10b981;
-            border-radius: 8px;
-            padding: 30px;
+            padding: 50px 20px 30px;
             text-align: center;
         }
 
-        .success-icon {
-            font-size: 64px;
-            color: #10b981;
-            margin-bottom: 20px;
-        }
-
-        .error-message {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-
-        .info-message {
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 10px;
-            border-radius: 8px;
-            margin-bottom: 15px;
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .progress-step-label {
+            .nav-links {
                 display: none;
             }
             
-            .booking-container {
-                padding: 20px;
+            .hero h1 {
+                font-size: 32px;
             }
             
-            .radio-option {
-                padding: 15px;
+            .section {
+                padding: 40px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Compliance Banner -->
-    <div style="background: #fef3c7; padding: 8px; text-align: center; font-size: 14px; border-bottom: 2px solid #fbbf24;">
-        ⚖️ All sessions recorded per Arizona law | Valid in all 50 states | Must be 18+ with government ID
-    </div>
+    <!-- Main Website -->
+    <div id="mainSite" class="page active">
+        <!-- Compliance Banner -->
+        <div class="compliance-banner">
+            ⚖️ All sessions recorded per Arizona law | Valid in all 50 states | Must be 18+ with government ID
+        </div>
 
-    <!-- Progress Bar -->
-    <div class="progress-container">
-        <div class="container">
-            <div class="progress-bar">
-                <div class="progress-step active" id="step1">
-                    <div class="progress-step-circle">1</div>
-                    <div class="progress-step-label">Service</div>
-                </div>
-                <div class="progress-step" id="step2">
-                    <div class="progress-step-circle">2</div>
-                    <div class="progress-step-label">Information</div>
-                </div>
-                <div class="progress-step" id="step3">
-                    <div class="progress-step-circle">3</div>
-                    <div class="progress-step-label">Document</div>
-                </div>
-                <div class="progress-step" id="step4">
-                    <div class="progress-step-circle">4</div>
-                    <div class="progress-step-label">Agreement</div>
-                </div>
-                <div class="progress-step" id="step5">
-                    <div class="progress-step-circle">5</div>
-                    <div class="progress-step-label">Payment</div>
-                </div>
-                <div class="progress-step" id="step6">
-                    <div class="progress-step-circle">6</div>
-                    <div class="progress-step-label">Confirmation</div>
-                </div>
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo" onclick="showPage('home')">
+                        <span>Direct</span><span>Notary</span>
+                    </div>
+                    <div class="nav-links">
+                        <a onclick="showPage('home')">Home</a>
+                        <a onclick="showPage('how')">How It Works</a>
+                        <a onclick="showPage('pricing')">Pricing</a>
+                        <a onclick="showPage('states')">All States</a>
+                        <button class="btn btn-primary" onclick="showPage('booking')">Book Now - $25</button>
+                        <button class="btn btn-outline" onclick="showPage('notary-login')">Notary Login</button>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Dynamic Content Container -->
+        <div id="contentArea">
+            <!-- Home Page Content (Default) -->
+            <div id="homePage" class="page-content active">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="container">
+                        <div class="badge">SERVING ALL 50 STATES + DC</div>
+                        <h1>Online Notary Service for Every State in America</h1>
+                        <p>Get any document notarized online in minutes. Our licensed Arizona notaries provide legally valid notarizations for customers nationwide, 24/7.</p>
+                        
+                        <div class="buttons">
+                            <button class="btn btn-success" onclick="showPage('booking')">Book Standard - $25</button>
+                            <button class="btn btn-danger" onclick="showPage('booking')">Emergency 24/7 - $75</button>
+                        </div>
+
+                        <p style="margin-top: 30px; font-size: 16px;">🎉 First-Time Special: FREE first notarization (pay only if satisfied)</p>
+                    </div>
+                </section>
+
+                <!-- Features Section -->
+                <section class="section">
+                    <div class="container">
+                        <h2 class="section-title">Why It's Legal in All 50 States</h2>
+                        <div class="grid grid-3">
+                            <div class="card">
+                                <h3 style="color: #3b82f6; margin-bottom: 15px;">🏛️ Federal Law Protection</h3>
+                                <p>The Full Faith and Credit Clause of the U.S. Constitution requires all states to recognize notarizations performed in other states.</p>
+                            </div>
+                            <div class="card">
+                                <h3 style="color: #3b82f6; margin-bottom: 15px;">⚖️ Interstate Recognition</h3>
+                                <p>Your bank, court, or agency in any state must legally accept our Arizona notarization. It's federal law.</p>
+                            </div>
+                            <div class="card">
+                                <h3 style="color: #3b82f6; margin-bottom: 15px;">✅ Fully Compliant</h3>
+                                <p>Arizona RON laws meet or exceed federal standards for identity verification and document security.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- How It Works Preview -->
+                <section class="section section-gray">
+                    <div class="container">
+                        <h2 class="section-title">How It Works</h2>
+                        <div class="grid grid-4">
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 48px; margin-bottom: 15px;">📝</div>
+                                <h3>1. Book Service</h3>
+                                <p>Choose your service level and provide information</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 48px; margin-bottom: 15px;">📤</div>
+                                <h3>2. Upload Document</h3>
+                                <p>Send us your document securely</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 48px; margin-bottom: 15px;">🎥</div>
+                                <h3>3. Video Session</h3>
+                                <p>Connect with notary via secure video</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <div style="font-size: 48px; margin-bottom: 15px;">✅</div>
+                                <h3>4. Receive PDF</h3>
+                                <p>Get your notarized document instantly</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 40px;">
+                            <button class="btn btn-primary" onclick="showPage('booking')">Start Your Notarization</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Pricing Preview -->
+                <section class="section">
+                    <div class="container">
+                        <h2 class="section-title">Simple, Transparent Pricing</h2>
+                        <div class="grid grid-3">
+                            <div class="card price-card">
+                                <h3>Standard</h3>
+                                <div class="price">$25</div>
+                                <p style="margin-bottom: 20px;">Perfect for planned notarizations</p>
+                                <ul style="list-style: none; padding: 0; text-align: left;">
+                                    <li>✓ Single document</li>
+                                    <li>✓ Within 4 hours</li>
+                                    <li>✓ Business hours</li>
+                                    <li>✓ Email delivery</li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="showPage('booking')">Choose Standard</button>
+                            </div>
+                            
+                            <div class="card price-card featured">
+                                <span class="popular-badge">MOST POPULAR</span>
+                                <h3>Priority</h3>
+                                <div class="price">$45</div>
+                                <p style="margin-bottom: 20px;">Faster service when you need it</p>
+                                <ul style="list-style: none; padding: 0; text-align: left;">
+                                    <li>✓ Within 1 hour</li>
+                                    <li>✓ Extended hours</li>
+                                    <li>✓ Text updates</li>
+                                    <li>✓ Priority support</li>
+                                </ul>
+                                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="showPage('booking')">Choose Priority</button>
+                            </div>
+                            
+                            <div class="card price-card">
+                                <h3>Emergency</h3>
+                                <div class="price" style="color: #ef4444;">$75</div>
+                                <p style="margin-bottom: 20px;">Urgent situations, available 24/7</p>
+                                <ul style="list-style: none; padding: 0; text-align: left;">
+                                    <li>✓ 30 minutes or less</li>
+                                    <li>✓ Available 24/7/365</li>
+                                    <li>✓ Hospital/urgent</li>
+                                    <li>✓ Phone support</li>
+                                </ul>
+                                <button class="btn btn-danger" style="width: 100%; margin-top: 20px;" onclick="showPage('booking')">Emergency Service</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Other Pages Content -->
+            <div id="howPage" class="page-content" style="display: none;">
+                <section class="section">
+                    <div class="container">
+                        <h1 class="section-title">How Online Notarization Works</h1>
+                        
+                        <div style="max-width: 800px; margin: 0 auto;">
+                            <div class="card" style="margin-bottom: 30px;">
+                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 1: Book Your Service</h2>
+                                <p>Choose your service level (Standard $25, Priority $45, or Emergency $75) and provide your information. Payment is processed securely through our platform.</p>
+                            </div>
+                            
+                            <div class="card" style="margin-bottom: 30px;">
+                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 2: Upload Your Document</h2>
+                                <p>Upload your document in PDF, JPG, or PNG format. You can also take a photo with your phone. Make sure all fields are filled out before the notarization.</p>
+                            </div>
+                            
+                            <div class="card" style="margin-bottom: 30px;">
+                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 3: Verify Your Identity</h2>
+                                <p>Show your government-issued photo ID to the notary. You'll answer a few security questions to verify your identity (knowledge-based authentication).</p>
+                            </div>
+                            
+                            <div class="card" style="margin-bottom: 30px;">
+                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 4: Connect with Notary</h2>
+                                <p>Join a secure video call with your assigned Arizona notary. The session is recorded for legal compliance. The notary will guide you through the signing process.</p>
+                            </div>
+                            
+                            <div class="card">
+                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 5: Receive Your Document</h2>
+                                <p>After notarization, you'll immediately receive your notarized document as a PDF with the notary's digital seal and certificate. This is legally valid in all 50 states.</p>
+                            </div>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 50px;">
+                            <button class="btn btn-primary" onclick="showPage('booking')">Start Your Notarization</button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="pricingPage" class="page-content" style="display: none;">
+                <!-- Pricing page content here -->
+            </div>
+
+            <div id="statesPage" class="page-content" style="display: none;">
+                <!-- States page content here -->
             </div>
         </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <h3 style="font-size: 24px; margin-bottom: 10px;">DirectNotary</h3>
+                <p style="margin-bottom: 20px;">Licensed Arizona Notaries Serving All 50 States</p>
+                
+                <p style="font-size: 14px; margin-bottom: 10px;">DirectNotary LLC | Arizona Entity #23888463</p>
+                <p style="font-size: 14px; margin-bottom: 20px;">Platform connecting customers with licensed RON notaries</p>
+                
+                <div style="margin: 20px 0;">
+                    <a href="#">Terms</a> | 
+                    <a href="#">Privacy</a> | 
+                    <a href="#" onclick="showPage('states')">All States</a>
+                </div>
+                
+                <p style="font-size: 12px; color: #9ca3af; margin-top: 30px;">
+                    Not a law firm. Cannot provide legal advice. Notarizations performed under Arizona law.
+                </p>
+            </div>
+        </footer>
     </div>
 
-    <!-- Booking Container -->
-    <div class="booking-container">
-        <form id="bookingForm">
-            <!-- Step 1: Service Selection -->
-            <div class="form-section active" id="section1">
-                <h2>Select Your Service Level</h2>
-                <p style="color: #6b7280; margin-bottom: 30px;">Choose the service that best fits your timeline and needs</p>
-                
-                <div class="radio-group">
-                    <label class="radio-option">
-                        <input type="radio" name="serviceLevel" value="standard" checked>
-                        <div style="flex: 1;">
-                            <h3>Standard Service</h3>
-                            <p style="color: #6b7280;">Perfect for planned notarizations</p>
-                            <ul style="margin-top: 10px; color: #6b7280; font-size: 14px;">
-                                <li>Completed within 4 hours</li>
-                                <li>Monday-Friday, 9am-5pm MST</li>
-                                <li>Email delivery</li>
-                            </ul>
-                            <div class="service-price">$25</div>
-                        </div>
-                    </label>
-                    
-                    <label class="radio-option">
-                        <input type="radio" name="serviceLevel" value="priority">
-                        <div style="flex: 1;">
-                            <h3>Priority Service</h3>
-                            <p style="color: #6b7280;">Faster service when you need it</p>
-                            <ul style="margin-top: 10px; color: #6b7280; font-size: 14px;">
-                                <li>Completed within 1 hour</li>
-                                <li>Extended hours (7am-9pm MST)</li>
-                                <li>SMS text updates</li>
-                            </ul>
-                            <div class="service-price">$45</div>
-                        </div>
-                    </label>
-                    
-                    <label class="radio-option">
-                        <input type="radio" name="serviceLevel" value="emergency">
-                        <div style="flex: 1;">
-                            <h3>Emergency Service</h3>
-                            <p style="color: #6b7280;">For urgent situations</p>
-                            <ul style="margin-top: 10px; color: #6b7280; font-size: 14px;">
-                                <li>30 minutes or less</li>
-                                <li>Available 24/7/365</li>
-                                <li>Direct phone support</li>
-                                <li>Hospital/bedside service</li>
-                            </ul>
-                            <div class="service-price">$75</div>
-                        </div>
-                    </label>
-                </div>
+    <!-- Booking Flow (Hidden by default) -->
+    <div id="bookingFlow" class="page" style="display: none;">
+        <!-- Your complete booking flow HTML here -->
+        <!-- This would include all the progress bars and forms from the previous code -->
+    </div>
 
-                <div class="form-buttons">
-                    <div></div>
-                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-                </div>
-            </div>
-
-            <!-- Step 2: Customer Information -->
-            <div class="form-section" id="section2">
-                <h2>Your Information</h2>
-                <p style="color: #6b7280; margin-bottom: 30px;">We need this information to connect you with a notary</p>
-                
-                <div class="form-group">
-                    <label>Full Legal Name *</label>
-                    <input type="text" name="fullName" required placeholder="As it appears on your ID">
-                </div>
-                
-                <div class="form-group">
-                    <label>Email Address *</label>
-                    <input type="email" name="email" required placeholder="john@example.com">
-                </div>
-                
-                <div class="form-group">
-                    <label>Phone Number *</label>
-                    <input type="tel" name="phone" required placeholder="(555) 123-4567">
-                </div>
-                
-                <div class="form-group">
-                    <label>Your State/Location *</label>
-                    <select name="state" required>
-                        <option value="">Select your state...</option>
-                        <option>Alabama</option>
-                        <option>Alaska</option>
-                        <option>Arizona</option>
-                        <option>Arkansas</option>
-                        <option>California</option>
-                        <option>Colorado</option>
-                        <option>Connecticut</option>
-                        <option>Delaware</option>
-                        <option>Florida</option>
-                        <option>Georgia</option>
-                        <option>Hawaii</option>
-                        <option>Idaho</option>
-                        <option>Illinois</option>
-                        <option>Indiana</option>
-                        <option>Iowa</option>
-                        <option>Kansas</option>
-                        <option>Kentucky</option>
-                        <option>Louisiana</option>
-                        <option>Maine</option>
-                        <option>Maryland</option>
-                        <option>Massachusetts</option>
-                        <option>Michigan</option>
-                        <option>Minnesota</option>
-                        <option>Mississippi</option>
-                        <option>Missouri</option>
-                        <option>Montana</option>
-                        <option>Nebraska</option>
-                        <option>Nevada</option>
-                        <option>New Hampshire</option>
-                        <option>New Jersey</option>
-                        <option>New Mexico</option>
-                        <option>New York</option>
-                        <option>North Carolina</option>
-                        <option>North Dakota</option>
-                        <option>Ohio</option>
-                        <option>Oklahoma</option>
-                        <option>Oregon</option>
-                        <option>Pennsylvania</option>
-                        <option>Rhode Island</option>
-                        <option>South Carolina</option>
-                        <option>South Dakota</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Utah</option>
-                        <option>Vermont</option>
-                        <option>Virginia</option>
-                        <option>Washington</option>
-                        <option>West Virginia</option>
-                        <option>Wisconsin</option>
-                        <option>Wyoming</option>
-                        <option>District of Columbia</option>
-                        <option>International (U.S. Citizen Abroad)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Type of ID You'll Present *</label>
-                    <select name="idType" required>
-                        <option value="">Select ID type...</option>
-                        <option>Driver's License</option>
-                        <option>State ID Card</option>
-                        <option>U.S. Passport</option>
-                        <option>Military ID</option>
-                    </select>
-                </div>
-
-                <div class="form-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-                </div>
-            </div>
-
-            <!-- Step 3: Document Upload & Details -->
-            <div class="form-section" id="section3">
-                <h2>Document Information</h2>
-                <p style="color: #6b7280; margin-bottom: 30px;">Tell us about your document and upload it for review</p>
-                
-                <div class="form-group">
-                    <label>Document Type *</label>
-                    <select name="documentType" required onchange="updateDocumentRequirements()">
-                        <option value="">Select document type...</option>
-                        <option value="poa-medical">Power of Attorney - Medical/Healthcare</option>
-                        <option value="poa-financial">Power of Attorney - Financial</option>
-                        <option value="real-estate">Real Estate Document</option>
-                        <option value="affidavit">Affidavit/Sworn Statement</option>
-                        <option value="business">Business Agreement/Contract</option>
-                        <option value="vehicle">Vehicle Title/Bill of Sale</option>
-                        <option value="trust">Trust Document</option>
-                        <option value="other">Other Legal Document</option>
-                    </select>
-                </div>
-
-                <div id="documentRequirements" class="info-message" style="display: none;">
-                    <!-- Dynamic requirements will appear here -->
-                </div>
-                
-                <div class="form-group">
-                    <label>Number of Signers *</label>
-                    <select name="signerCount" required>
-                        <option value="1">1 signer (just me)</option>
-                        <option value="2">2 signers</option>
-                        <option value="3">3+ signers</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Special Circumstances</label>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="hospital" id="hospital">
-                        <label for="hospital">Hospital/Medical Facility</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="urgent" id="urgent">
-                        <label for="urgent">Time-sensitive (deadline today)</label>
-                    </div>
-                    <div class="checkbox-group">
-                        <input type="checkbox" name="international" id="international">
-                        <label for="international">International use/Apostille needed</label>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Upload Your Document *</label>
-                    <div class="upload-area" onclick="document.getElementById('documentFile').click()" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
-                        <div class="upload-icon">📄</div>
-                        <h3>Click to upload or drag & drop</h3>
-                        <p style="color: #6b7280; margin-top: 10px;">PDF, JPG, PNG (Max 10MB)</p>
-                        <input type="file" id="documentFile" name="documentFile" accept=".pdf,.jpg,.jpeg,.png" style="display: none;" onchange="handleFileSelect(event)" required>
-                    </div>
-                    <div id="fileInfo" style="margin-top: 15px; display: none;">
-                        <p style="color: #10b981;">✓ File uploaded: <span id="fileName"></span></p>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Special Instructions (Optional)</label>
-                    <textarea name="instructions" rows="4" placeholder="Room number, specific requirements, etc."></textarea>
-                </div>
-
-                <div class="form-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-                </div>
-            </div>
-
-            <!-- Step 4: Service Agreement -->
-            <div class="form-section" id="section4">
-                <h2>Service Agreement & Consent</h2>
-                <p style="color: #6b7280; margin-bottom: 30px;">Please review and accept our terms of service</p>
-                
-                <div class="agreement-text">
-                    <h3>DIRECTNOTARY SERVICE AGREEMENT</h3>
-                    <p style="margin-top: 15px;"><strong>1. SERVICE DESCRIPTION</strong></p>
-                    <p>DirectNotary LLC operates as a platform connecting customers with independent licensed Arizona notaries for remote online notarization services.</p>
-                    
-                    <p style="margin-top: 15px;"><strong>2. DOCUMENT RESPONSIBILITY</strong></p>
-                    <p>You acknowledge that:</p>
-                    <ul>
-                        <li>Your document must be complete with no blank fields</li>
-                        <li>DirectNotary does not review document content for legal sufficiency</li>
-                        <li>You are responsible for the legal validity of your document</li>
-                        <li>We recommend consulting an attorney for legal advice</li>
-                    </ul>
-                    
-                    <p style="margin-top: 15px;"><strong>3. RECORDING CONSENT</strong></p>
-                    <p>You consent to audio-video recording of the entire notarization session. Recordings are retained for 5 years per Arizona Revised Statutes § 41-374.</p>
-                    
-                    <p style="margin-top: 15px;"><strong>4. IDENTITY VERIFICATION</strong></p>
-                    <p>You agree to:</p>
-                    <ul>
-                        <li>Provide valid, unexpired government-issued photo identification</li>
-                        <li>Complete knowledge-based authentication (5 questions)</li>
-                        <li>Confirm you are at least 18 years old</li>
-                    </ul>
-                    
-                    <p style="margin-top: 15px;"><strong>5. FEES & REFUNDS</strong></p>
-                    <p>Service fees are non-refundable after successful notarization. Refunds are available only if technical issues prevent completion or notary is unavailable.</p>
-                    
-                    <p style="margin-top: 15px;"><strong>6. INTERSTATE RECOGNITION</strong></p>
-                    <p>Arizona remote online notarizations are legally valid in all 50 states under the Full Faith and Credit Clause of the U.S. Constitution.</p>
-                    
-                    <p style="margin-top: 15px;"><strong>7. LIABILITY LIMITATION</strong></p>
-                    <p>Our maximum liability is limited to the service fee paid. We are not responsible for document content or legal sufficiency.</p>
-                </div>
-                
-                <div class="agreement-box">
-                    <h4 style="margin-bottom: 15px;">Required Acknowledgments</h4>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree1" required>
-                        <label for="agree1">I confirm my document is complete with no blank fields</label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree2" required>
-                        <label for="agree2">I consent to audio-video recording of the notarization session</label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree3" required>
-                        <label for="agree3">I will provide valid government-issued photo ID and am 18+ years old</label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree4" required>
-                        <label for="agree4">I understand DirectNotary is a platform service and does not provide legal advice</label>
-                    </div>
-                    
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="agree5" required>
-                        <label for="agree5">I accept the terms of service and understand fees are non-refundable after notarization</label>
-                    </div>
-                </div>
-
-                <div class="form-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue to Payment</button>
-                </div>
-            </div>
-
-            <!-- Step 5: Payment -->
-            <div class="form-section" id="section5">
-                <h2>Payment Information</h2>
-                <p style="color: #6b7280; margin-bottom: 30px;">Secure payment processing by Stripe</p>
-                
-                <div class="price-summary">
-                    <h3>Order Summary</h3>
-                    <div class="price-line">
-                        <span>Service Level:</span>
-                        <span id="summaryService">Standard Service</span>
-                    </div>
-                    <div class="price-line">
-                        <span>Document Type:</span>
-                        <span id="summaryDocument">Power of Attorney</span>
-                    </div>
-                    <div class="price-line">
-                        <span>Processing Time:</span>
-                        <span id="summaryTime">Within 4 hours</span>
-                    </div>
-                    <div class="price-line price-total">
-                        <span>Total Due:</span>
-                        <span id="summaryPrice">$25.00</span>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Cardholder Name *</label>
-                    <input type="text" name="cardName" required placeholder="John Smith">
-                </div>
-                
-                <div class="form-group">
-                    <label>Card Number *</label>
-                    <input type="text" name="cardNumber" required placeholder="1234 5678 9012 3456" maxlength="19">
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div class="form-group">
-                        <label>Expiration Date *</label>
-                        <input type="text" name="expiry" required placeholder="MM/YY" maxlength="5">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>CVV *</label>
-                        <input type="text" name="cvv" required placeholder="123" maxlength="4">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label>Billing ZIP Code *</label>
-                    <input type="text" name="zipCode" required placeholder="85001" maxlength="10">
-                </div>
-                
-                <div class="info-message">
-                    🔒 Your payment information is encrypted and secure. We never store your card details.
-                </div>
-
-                <div class="form-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                    <button type="button" class="btn btn-primary" onclick="processPayment()">Complete Payment</button>
-                </div>
-            </div>
-
-            <!-- Step 6: Confirmation -->
-            <div class="form-section" id="section6">
-                <div class="success-message">
-                    <div class="success-icon">✅</div>
-                    <h2>Booking Confirmed!</h2>
-                    <p style="margin-top: 20px; font-size: 18px;">Your notarization has been scheduled</p>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <h3 style="margin-bottom: 20px;">What Happens Next:</h3>
-                    
-                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
-                        <h4 style="color: #3b82f6;">1. Check Your Email</h4>
-                        <p>We've sent confirmation and instructions to your email address</p>
-                    </div>
-                    
-                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
-                        <h4 style="color: #3b82f6;">2. Notary Assignment</h4>
-                        <p>We're matching you with an available notary. You'll receive their name and session link within <span id="timeframe">4 hours</span></p>
-                    </div>
-                    
-                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
-                        <h4 style="color: #3b82f6;">3. Prepare for Session</h4>
-                        <p>Have your ID ready and ensure you have a stable internet connection</p>
-                    </div>
-                    
-                    <div style="background: #f9fafb; padding: 20px; border-radius: 8px;">
-                        <h4 style="color: #3b82f6;">4. Join Video Session</h4>
-                        <p>Click the link in your email at the scheduled time to connect with your notary</p>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 30px;">
-                    <h4>Your Confirmation Number:</h4>
-                    <p style="font-size: 24px; color: #3b82f6; font-weight: bold;">DNZ-2025-<span id="confirmationNumber">0001</span></p>
-                </div>
-                
-                <div style="margin-top: 30px; text-align: center;">
-                    <button class="btn btn-primary" onclick="window.location.href='/'">Return to Homepage</button>
-                </div>
-            </div>
-        </form>
+    <!-- Notary Login (Hidden by default) -->
+    <div id="notaryLogin" class="page" style="display: none;">
+        <!-- Notary login form here -->
     </div>
 
     <script>
-        let currentStep = 1;
-        const totalSteps = 6;
-        
-        // Form data storage
-        let bookingData = {
-            serviceLevel: 'standard',
-            fullName: '',
-            email: '',
-            phone: '',
-            state: '',
-            idType: '',
-            documentType: '',
-            signerCount: '1',
-            documentFile: null,
-            agreements: {
-                complete: false,
-                recording: false,
-                identification: false,
-                platform: false,
-                terms: false
-            }
-        };
-
-        // Navigation functions
-        function nextStep() {
-            if (validateStep(currentStep)) {
-                saveStepData(currentStep);
-                currentStep++;
-                showStep(currentStep);
-                updateProgress();
-                
-                // Update summary on payment page
-                if (currentStep === 5) {
-                    updatePaymentSummary();
-                }
-                
-                // Generate confirmation number
-                if (currentStep === 6) {
-                    generateConfirmation();
-                }
-            }
-        }
-
-        function prevStep() {
-            currentStep--;
-            showStep(currentStep);
-            updateProgress();
-        }
-
-        function showStep(step) {
-            // Hide all sections
-            document.querySelectorAll('.form-section').forEach(section => {
-                section.classList.remove('active');
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages first
+            document.querySelectorAll('.page').forEach(page => {
+                page.style.display = 'none';
             });
             
-            // Show current section
-            document.getElementById('section' + step).classList.add('active');
+            // Hide all content within main site
+            document.querySelectorAll('.page-content').forEach(content => {
+                content.style.display = 'none';
+            });
+
+            // Show the requested page
+            if (pageName === 'booking') {
+                document.getElementById('mainSite').style.display = 'none';
+                document.getElementById('bookingFlow').style.display = 'block';
+                // Initialize booking flow here
+            } else if (pageName === 'notary-login') {
+                document.getElementById('mainSite').style.display = 'none';
+                document.getElementById('notaryLogin').style.display = 'block';
+            } else {
+                // Show main site
+                document.getElementById('mainSite').style.display = 'block';
+                
+                // Show specific content page
+                if (pageName === 'home') {
+                    document.getElementById('homePage').style.display = 'block';
+                } else if (pageName === 'how') {
+                    document.getElementById('howPage').style.display = 'block';
+                } else if (pageName === 'pricing') {
+                    document.getElementById('pricingPage').style.display = 'block';
+                } else if (pageName === 'states') {
+                    document.getElementById('statesPage').style.display = 'block';
+                }
+            }
             
             // Scroll to top
             window.scrollTo(0, 0);
         }
 
-        function updateProgress() {
-            for (let i = 1; i <= totalSteps; i++) {
-                const stepElement = document.getElementById('step' + i);
-                
-                if (i < currentStep) {
-                    stepElement.classList.add('completed');
-                    stepElement.classList.remove('active');
-                } else if (i === currentStep) {
-                    stepElement.classList.add('active');
-                    stepElement.classList.remove('completed');
-                } else {
-                    stepElement.classList.remove('active', 'completed');
-                }
-            }
+        // Initialize - make sure homepage shows first
+        window.onload = function() {
+            showPage('home');
         }
-
-        function validateStep(step) {
-            switch(step) {
-                case 1:
-                    // Service selection is always valid
-                    return true;
-                    
-                case 2:
-                    // Validate customer information
-                    const name = document.querySelector('input[name="fullName"]').value;
-                    const email = document.querySelector('input[name="email"]').value;
-                    const phone = document.querySelector('input[name="phone"]').value;
-                    const state = document.querySelector('select[name="state"]').value;
-                    const idType = document.querySelector('select[name="idType"]').value;
-                    
-                    if (!name || !email || !phone || !state || !idType) {
-                        alert('Please fill in all required fields');
-                        return false;
-                    }
-                    
-                    // Email validation
-                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailPattern.test(email)) {
-                        alert('Please enter a valid email address');
-                        return false;
-                    }
-                    
-                    return true;
-                    
-                case 3:
-                    // Validate document information
-                    const docType = document.querySelector('select[name="documentType"]').value;
-                    const fileInput = document.getElementById('documentFile');
-                    
-                    if (!docType) {
-                        alert('Please select a document type');
-                        return false;
-                    }
-                    
-                    if (!fileInput.files || !fileInput.files[0]) {
-                        alert('Please upload your document');
-                        return false;
-                    }
-                    
-                    return true;
-                    
-                case 4:
-                    // Validate agreements
-                    const checkboxes = document.querySelectorAll('#section4 input[type="checkbox"]');
-                    for (let checkbox of checkboxes) {
-                        if (!checkbox.checked) {
-                            alert('Please accept all required agreements');
-                            return false;
-                        }
-                    }
-                    return true;
-                    
-                case 5:
-                    // Payment validation would happen here
-                    // For demo, just return true
-                    return true;
-                    
-                default:
-                    return true;
-            }
-        }
-
-        function saveStepData(step) {
-            switch(step) {
-                case 1:
-                    const serviceLevel = document.querySelector('input[name="serviceLevel"]:checked').value;
-                    bookingData.serviceLevel = serviceLevel;
-                    break;
-                    
-                case 2:
-                    bookingData.fullName = document.querySelector('input[name="fullName"]').value;
-                    bookingData.email = document.querySelector('input[name="email"]').value;
-                    bookingData.phone = document.querySelector('input[name="phone"]').value;
-                    bookingData.state = document.querySelector('select[name="state"]').value;
-                    bookingData.idType = document.querySelector('select[name="idType"]').value;
-                    break;
-                    
-                case 3:
-                    bookingData.documentType = document.querySelector('select[name="documentType"]').value;
-                    bookingData.signerCount = document.querySelector('select[name="signerCount"]').value;
-                    bookingData.instructions = document.querySelector('textarea[name="instructions"]').value;
-                    break;
-                    
-                case 4:
-                    bookingData.agreements.complete = document.getElementById('agree1').checked;
-                    bookingData.agreements.recording = document.getElementById('agree2').checked;
-                    bookingData.agreements.identification = document.getElementById('agree3').checked;
-                    bookingData.agreements.platform = document.getElementById('agree4').checked;
-                    bookingData.agreements.terms = document.getElementById('agree5').checked;
-                    break;
-            }
-        }
-
-        // File handling
-        function handleFileSelect(event) {
-            const file = event.target.files[0];
-            if (file) {
-                // Check file size (10MB limit)
-                if (file.size > 10 * 1024 * 1024) {
-                    alert('File size must be less than 10MB');
-                    event.target.value = '';
-                    return;
-                }
-                
-                // Check file type
-                const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
-                if (!allowedTypes.includes(file.type)) {
-                    alert('Please upload a PDF, JPG, or PNG file');
-                    event.target.value = '';
-                    return;
-                }
-                
-                bookingData.documentFile = file;
-                document.getElementById('fileName').textContent = file.name;
-                document.getElementById('fileInfo').style.display = 'block';
-            }
-        }
-
-        function handleDrop(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            
-            const uploadArea = document.querySelector('.upload-area');
-            uploadArea.classList.remove('dragging');
-            
-            const files = event.dataTransfer.files;
-            if (files.length > 0) {
-                document.getElementById('documentFile').files = files;
-                handleFileSelect({ target: { files: files } });
-            }
-        }
-
-        function handleDragOver(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            document.querySelector('.upload-area').classList.add('dragging');
-        }
-
-        function handleDragLeave(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            document.querySelector('.upload-area').classList.remove('dragging');
-        }
-
-        // Dynamic document requirements
-        function updateDocumentRequirements() {
-            const docType = document.querySelector('select[name="documentType"]').value;
-            const reqDiv = document.getElementById('documentRequirements');
-            
-            const requirements = {
-                'poa-medical': 'Medical POA must include patient name, agent name, and healthcare directives. Document must be unsigned.',
-                'poa-financial': 'Financial POA must specify powers granted and effective date. Principal must be present for notarization.',
-                'real-estate': 'Real estate documents must have property address and all parties named. Check with your title company first.',
-                'affidavit': 'Affidavit must contain statement of facts and signature line for affiant.',
-                'business': 'Business documents must have all parties named and terms clearly stated.',
-                'vehicle': 'Vehicle documents must include VIN, make/model, and all parties involved in transaction.',
-                'trust': 'Trust documents require trustor presence and may need witness signatures.',
-                'other': 'Ensure your document is complete with no blank fields before notarization.'
-            };
-            
-            if (docType && requirements[docType]) {
-                reqDiv.innerHTML = '<strong>Requirements:</strong> ' + requirements[docType];
-                reqDiv.style.display = 'block';
-            } else {
-                reqDiv.style.display = 'none';
-            }
-        }
-
-        // Payment processing
-        function updatePaymentSummary() {
-            const prices = {
-                'standard': 25,
-                'priority': 45,
-                'emergency': 75
-            };
-            
-            const serviceNames = {
-                'standard': 'Standard Service',
-                'priority': 'Priority Service',
-                'emergency': 'Emergency Service'
-            };
-            
-            const timeframes = {
-                'standard': 'Within 4 hours',
-                'priority': 'Within 1 hour',
-                'emergency': '30 minutes or less'
-            };
-            
-            const docTypes = {
-                'poa-medical': 'Power of Attorney - Medical',
-                'poa-financial': 'Power of Attorney - Financial',
-                'real-estate': 'Real Estate Document',
-                'affidavit': 'Affidavit',
-                'business': 'Business Agreement',
-                'vehicle': 'Vehicle Title',
-                'trust': 'Trust Document',
-                'other': 'Legal Document'
-            };
-            
-            document.getElementById('summaryService').textContent = serviceNames[bookingData.serviceLevel];
-            document.getElementById('summaryDocument').textContent = docTypes[bookingData.documentType] || 'Document';
-            document.getElementById('summaryTime').textContent = timeframes[bookingData.serviceLevel];
-            document.getElementById('summaryPrice').textContent = '$' + prices[bookingData.serviceLevel] + '.00';
-        }
-
-        function processPayment() {
-            // In production, this would integrate with Stripe
-            // For now, simulate payment processing
-            
-            // Show loading state
-            const btn = event.target;
-            btn.textContent = 'Processing...';
-            btn.disabled = true;
-            
-            // Simulate API call
-            setTimeout(() => {
-                // Move to confirmation
-                currentStep++;
-                showStep(currentStep);
-                updateProgress();
-                generateConfirmation();
-            }, 2000);
-        }
-
-        function generateConfirmation() {
-            // Generate random confirmation number
-            const confirmNum = Math.floor(Math.random() * 9000) + 1000;
-            document.getElementById('confirmationNumber').textContent = confirmNum;
-            
-            // Update timeframe based on service level
-            const timeframes = {
-                'standard': '4 hours',
-                'priority': '1 hour',
-                'emergency': '30 minutes'
-            };
-            
-            document.getElementById('timeframe').textContent = timeframes[bookingData.serviceLevel];
-            
-            // In production, send confirmation email here
-            console.log('Booking confirmed:', bookingData);
-        }
-
-        // Radio button styling
-        document.querySelectorAll('input[type="radio"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                // Remove selected class from all radio options
-                document.querySelectorAll('.radio-option').forEach(option => {
-                    option.classList.remove('selected');
-                });
-                
-                // Add selected class to parent label
-                if (this.checked) {
-                    this.closest('.radio-option').classList.add('selected');
-                }
-            });
-        });
-
-        // Card number formatting
-        document.querySelector('input[name="cardNumber"]')?.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '');
-            let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
-            e.target.value = formattedValue;
-        });
-
-        // Expiry date formatting
-        document.querySelector('input[name="expiry"]')?.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            }
-            e.target.value = value;
-        });
-
-        // Initialize first step as selected
-        document.querySelector('input[name="serviceLevel"]:checked')?.closest('.radio-option')?.classList.add('selected');
     </script>
 </body>
 </html>
