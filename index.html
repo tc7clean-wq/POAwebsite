@@ -1,552 +1,213 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PowerOfAttorneyNOW - Emergency Online Notary 24/7</title>
-    <meta name="description" content="Emergency Power of Attorney notarization available 24/7. Arizona certified online notary. Hospital & bank accepted. Complete in 15 minutes.">
-    <script src="https://js.stripe.com/v3/"></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; }
+import { useState } from 'react';
 
-        /* Emergency Banner */
-        .emergency-banner { background: #dc2626; color: white; padding: 12px; text-align: center; font-weight: bold; animation: pulse 2s infinite; position: relative; }
-        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.9; } }
-        .live-indicator { display: inline-block; width: 8px; height: 8px; background: #22c55e; border-radius: 50%; margin-right: 8px; animation: blink 1s infinite; }
-        @keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0.3; } }
+export default function Home() {
+  return (
+    <div>
+      {/* Compliance Banner */}
+      <div className="bg-yellow-100 p-3 text-center text-sm">
+        ⚠️ All sessions recorded per Arizona law | 18+ with valid ID | Legally valid in all 50 states
+      </div>
 
-        /* Navigation */
-        nav { background: white; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-        .nav-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: bold; }
-        .nav-cta { background: #2563eb; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+      {/* Nationwide Banner */}
+      <div className="bg-green-600 text-white py-2 text-center font-bold">
+        NATIONWIDE SERVICE - Serving All 50 States + DC + U.S. Territories
+      </div>
 
-        /* Hero Section */
-        .hero { background: linear-gradient(135deg, #eff6ff, #dbeafe); padding: 80px 20px; text-align: center; }
-        h1 { font-size: 52px; margin-bottom: 24px; line-height: 1.2; }
-        .blue { color: #2563eb; }
-        .subtitle { font-size: 22px; color: #666; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .trust-indicators { display: flex; justify-content: center; gap: 40px; margin: 40px 0; flex-wrap: wrap; }
-        .trust-item { display: flex; align-items: center; gap: 8px; font-weight: 600; color: #059669; }
-
-        /* Buttons */
-        .buttons { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
-        .btn { padding: 18px 36px; border-radius: 12px; font-size: 18px; font-weight: bold; text-decoration: none; cursor: pointer; border: none; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .btn-emergency { background: #dc2626; color: white; }
-        .btn-emergency:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(220,38,38,0.3); }
-        .btn-secondary { background: white; color: #2563eb; border: 2px solid #2563eb; }
-        .btn-secondary:hover { background: #2563eb; color: white; }
-
-        /* Pricing */
-        .pricing { padding: 80px 20px; background: #f9fafb; }
-        .section-title { text-align: center; font-size: 42px; margin-bottom: 60px; }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .price-box { background: white; border: 3px solid #dc2626; padding: 40px; border-radius: 16px; position: relative; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
-        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #dc2626; color: white; padding: 8px 24px; border-radius: 20px; font-weight: bold; font-size: 14px; }
-        .price-title { font-size: 28px; margin-bottom: 16px; }
-        .price { font-size: 52px; font-weight: bold; margin: 24px 0; color: #dc2626; }
-        .price-features { list-style: none; margin: 30px 0; }
-        .price-features li { padding: 8px 0; font-size: 16px; }
-        .check { color: #059669; font-weight: bold; margin-right: 8px; }
-
-        /* Modal */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; }
-        .modal-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 40px; border-radius: 16px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto; }
-        .modal h2 { margin-bottom: 24px; color: #1f2937; }
-        .form-group { margin-bottom: 24px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #374151; }
-        .form-control { width: 100%; padding: 12px 16px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; transition: border-color 0.3s; }
-        .form-control:focus { outline: none; border-color: #2563eb; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; }
-        .checkbox-group input[type="checkbox"] { margin-top: 4px; }
-        .close { position: absolute; top: 20px; right: 24px; font-size: 28px; cursor: pointer; color: #6b7280; }
-        .close:hover { color: #1f2937; }
-
-        /* How It Works */
-        .how-it-works { padding: 80px 20px; background: white; }
-        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
-        .step { text-align: center; padding: 30px; }
-        .step-number { width: 60px; height: 60px; background: #2563eb; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; margin: 0 auto 20px; }
-        .step h3 { font-size: 20px; margin-bottom: 12px; }
-        .step p { color: #6b7280; }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { font-size: 36px; }
-            .subtitle { font-size: 18px; }
-            .buttons { flex-direction: column; align-items: center; }
-            .btn { width: 100%; max-width: 320px; }
-            .trust-indicators { flex-direction: column; gap: 20px; }
-            .form-row { grid-template-columns: 1fr; }
-            .nav-content { flex-direction: column; gap: 16px; }
-        }
-    </style>
-</head>
-<body>
-    <!-- Emergency Banner -->
-    <div class="emergency-banner">
-        <span class="live-indicator"></span>
-        🚨 LIVE NOW: Emergency POA Service • <strong>5 Notaries Online</strong> • Average Response: 3 minutes
-    </div>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-content">
-            <div class="logo">📄 POA<span style="color: #2563eb;">NOW</span></div>
-            <a href="tel:6025550199" class="nav-cta">
-                <span class="live-indicator"></span>
-                📞 (602) 555-0199
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Arizona Online Notary Services<br><span class="blue">Available 24/7</span></h1>
-        <p class="subtitle">
-            Emergency POA, real estate closings, legal documents, contracts, and more.
-            Arizona certified notaries available right now. Complete any notarization in 15 minutes via secure video call.
+      {/* Hero Section */}
+      <section className="bg-blue-900 text-white py-20 text-center">
+        <h1 className="text-5xl font-bold mb-4">Online Notary for All 50 States</h1>
+        <h2 className="text-2xl mb-6">Licensed Arizona RON Notaries Serving the Entire USA</h2>
+        <p className="text-lg mb-8 max-w-3xl mx-auto">
+          Get documents notarized from anywhere in America. Federal law requires all states 
+          to accept notarizations from our Arizona-licensed notaries.
         </p>
-
-        <div class="trust-indicators">
-            <div class="trust-item">
-                <span class="live-indicator"></span>
-                <span>Live Notaries Available</span>
-            </div>
-            <div class="trust-item">
-                ✅ <span>Bank & Legal Accepted</span>
-            </div>
-            <div class="trust-item">
-                🏆 <span>Arizona State Certified</span>
-            </div>
-            <div class="trust-item">
-                ⚡ <span>15-Minute Process</span>
-            </div>
+        
+        {/* State Grid */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 max-w-4xl mx-auto mb-8 text-sm">
+          <div>✓ California</div>
+          <div>✓ Texas</div>
+          <div>✓ New York</div>
+          <div>✓ Florida</div>
+          <div>✓ Illinois</div>
+          <div>✓ All Others</div>
         </div>
 
-        <div class="buttons">
-            <button class="btn btn-emergency" onclick="startEmergencyPOA()">
-                🚨 EMERGENCY POA - Start Now
+        <div className="space-x-4">
+          <button 
+            onClick={() => window.location.href='/book'}
+            className="bg-green-500 px-8 py-4 rounded text-lg font-semibold hover:bg-green-600"
+          >
+            Start Now - Any State - $25
+          </button>
+          <button 
+            onClick={() => window.location.href='/book?type=emergency'}
+            className="bg-red-500 px-8 py-4 rounded text-lg font-semibold hover:bg-red-600"
+          >
+            Emergency 24/7 - $75
+          </button>
+        </div>
+
+        <div className="mt-8 text-sm">
+          🎉 First-Time Special: First Notarization FREE (pay only if satisfied)
+        </div>
+      </section>
+
+      {/* Why It's Legal Nationwide */}
+      <section className="py-16 px-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-8">Why It's Legal in Your State</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded shadow">
+              <h3 className="font-bold mb-3">🏛️ Federal Law</h3>
+              <p className="text-sm">The Full Faith and Credit Clause of the U.S. Constitution requires 
+              all states to recognize notarizations from other states.</p>
+            </div>
+            <div className="bg-white p-6 rounded shadow">
+              <h3 className="font-bold mb-3">⚖️ Interstate Recognition</h3>
+              <p className="text-sm">Your bank, court, or agency must accept our Arizona notarization 
+              by law, regardless of your state.</p>
+            </div>
+            <div className="bg-white p-6 rounded shadow">
+              <h3 className="font-bold mb-3">✅ Fully Compliant</h3>
+              <p className="text-sm">Our notaries follow Arizona RON laws which meet or exceed 
+              federal standards for identity verification.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-16 px-8 max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-4">Simple Pricing for All States</h2>
+        <p className="text-center text-gray-600 mb-12">Same low price whether you're in Alaska or Alabama</p>
+        
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="border-2 border-gray-200 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4">Standard</h3>
+            <p className="text-4xl font-bold text-green-600 mb-4">$25</p>
+            <p className="text-sm text-gray-600 mb-4">Available in all 50 states</p>
+            <ul className="space-y-2">
+              <li>✓ Single document</li>
+              <li>✓ Within 4 hours</li>
+              <li>✓ Business hours</li>
+              <li>✓ Valid nationwide</li>
+            </ul>
+            <button className="w-full mt-6 bg-blue-500 text-white py-3 rounded hover:bg-blue-600">
+              Book Standard
             </button>
-            <button class="btn btn-secondary" onclick="startRegularNotary()">
-                📋 Other Notary Services
+          </div>
+
+          <div className="border-2 border-blue-500 p-8 rounded-lg relative">
+            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded text-sm">
+              MOST POPULAR
+            </span>
+            <h3 className="text-2xl font-bold mb-4">Priority</h3>
+            <p className="text-4xl font-bold text-blue-600 mb-4">$45</p>
+            <p className="text-sm text-gray-600 mb-4">Faster service, any state</p>
+            <ul className="space-y-2">
+              <li>✓ Within 1 hour</li>
+              <li>✓ Extended hours</li>
+              <li>✓ Text updates</li>
+              <li>✓ Priority support</li>
+            </ul>
+            <button className="w-full mt-6 bg-blue-500 text-white py-3 rounded hover:bg-blue-600">
+              Book Priority
             </button>
+          </div>
+
+          <div className="border-2 border-red-500 p-8 rounded-lg">
+            <h3 className="text-2xl font-bold mb-4">Emergency</h3>
+            <p className="text-4xl font-bold text-red-600 mb-4">$75</p>
+            <p className="text-sm text-gray-600 mb-4">24/7 service, all states</p>
+            <ul className="space-y-2">
+              <li>✓ 30 minutes or less</li>
+              <li>✓ Nights/weekends</li>
+              <li>✓ Hospital/urgent</li>
+              <li>✓ Phone support</li>
+            </ul>
+            <button className="w-full mt-6 bg-red-500 text-white py-3 rounded hover:bg-red-600">
+              Emergency Now
+            </button>
+          </div>
         </div>
+      </section>
+
+      {/* States We Serve */}
+      <section className="bg-blue-50 py-16 px-8">
+        <h2 className="text-3xl font-bold text-center mb-8">We Serve Every State</h2>
+        <div className="max-w-6xl mx-auto text-center text-sm">
+          <p className="font-semibold mb-4">All 50 States + DC + U.S. Territories:</p>
+          <p className="text-gray-700 leading-relaxed">
+            Alabama • Alaska • Arizona • Arkansas • California • Colorado • Connecticut • Delaware • 
+            Florida • Georgia • Hawaii • Idaho • Illinois • Indiana • Iowa • Kansas • Kentucky • 
+            Louisiana • Maine • Maryland • Massachusetts • Michigan • Minnesota • Mississippi • 
+            Missouri • Montana • Nebraska • Nevada • New Hampshire • New Jersey • New Mexico • 
+            New York • North Carolina • North Dakota • Ohio • Oklahoma • Oregon • Pennsylvania • 
+            Rhode Island • South Carolina • South Dakota • Tennessee • Texas • Utah • Vermont • 
+            Virginia • Washington • West Virginia • Wisconsin • Wyoming • Washington D.C. • 
+            Puerto Rico • U.S. Virgin Islands • Guam • American Samoa
+          </p>
+        </div>
+
+        <div className="mt-12 max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded shadow">
+            <h3 className="font-bold mb-3">🌎 International Customers Welcome</h3>
+            <p className="text-sm">U.S. citizens abroad, military overseas, and international 
+            business transactions. We serve customers in 140+ countries.</p>
+          </div>
+          <div className="bg-white p-6 rounded shadow">
+            <h3 className="font-bold mb-3">🏥 Specialists in Emergency Situations</h3>
+            <p className="text-sm">Hospital bedside POAs, urgent real estate closings, 
+            time-sensitive legal documents. Available 24/7 nationwide.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 px-8 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12">Nationwide Service FAQs</h2>
+        <div className="space-y-6">
+          <div className="border-b pb-4">
+            <h3 className="font-bold mb-2">I'm in California. Is an Arizona online notarization legal here?</h3>
+            <p className="text-gray-700">Yes. Federal law and the Full Faith and Credit Clause require 
+            California and all other states to recognize properly performed notarizations from Arizona.</p>
+          </div>
+          <div className="border-b pb-4">
+            <h3 className="font-bold mb-2">Will my bank in New York accept this?</h3>
+            <p className="text-gray-700">Yes. Banks, courts, and government agencies in all 50 states must 
+            accept our notarizations. We provide a certificate that confirms federal validity.</p>
+          </div>
+          <div className="border-b pb-4">
+            <h3 className="font-bold mb-2">Which states can use your service?</h3>
+            <p className="text-gray-700">All 50 states, Washington D.C., and U.S. territories. We also serve 
+            U.S. citizens living abroad and military personnel stationed overseas.</p>
+          </div>
+          <div className="border-b pb-4">
+            <h3 className="font-bold mb-2">Do you have notaries in my state?</h3>
+            <p className="text-gray-700">Our notaries are licensed in Arizona and perform all notarizations 
+            from Arizona, which makes them legally valid nationwide under federal interstate recognition laws.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-8 text-center">
+        <p className="text-2xl font-bold mb-4">Nationwide Online Notary Service</p>
+        <p className="mb-2">DirectNotary LLC | Arizona Entity #23888463</p>
+        <p className="mb-4 text-sm">Licensed Arizona notaries serving all 50 states</p>
+        <p className="text-sm text-gray-400 mb-6">
+          Platform service connecting customers nationwide with licensed Arizona RON notaries
+        </p>
+        <div className="space-x-4">
+          <a href="/terms" className="text-blue-400 hover:underline">Terms</a>
+          <a href="/privacy" className="text-blue-400 hover:underline">Privacy</a>
+          <a href="/states" className="text-blue-400 hover:underline">State Laws</a>
+        </div>
+        <p className="text-xs text-gray-500 mt-6">
+          Not a law firm. Cannot provide legal advice. Notarizations performed under Arizona law 
+          and recognized nationwide under federal interstate recognition requirements.
+        </p>
+      </footer>
     </div>
-    
-    <!-- How It Works -->
-    <div class="how-it-works">
-        <h2 class="section-title">How Our Emergency Online Notary Works</h2>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>Click & Connect</h3>
-                <p>Fill out secure form and connect with Arizona certified notary via video call within 5 minutes</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>Verify & Review</h3>
-                <p>Present valid ID, review POA documents with notary, ask any questions</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Sign & Receive</h3>
-                <p>Digitally sign documents, receive notarized POA instantly via email and text</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Services Section -->
-    <div class="pricing">
-        <h2 class="section-title">Complete Online Notary Services</h2>
-        <p style="text-align: center; margin-bottom: 50px; color: #6b7280; font-size: 18px;">Arizona certified notaries available 24/7 for all your document needs</p>
-
-        <div class="price-grid">
-            <div class="price-box">
-                <div class="popular-badge">EMERGENCY</div>
-                <h3 class="price-title">Power of Attorney</h3>
-                <div class="price">$349</div>
-                <ul class="price-features">
-                    <li><span class="check">✓</span> Available 24/7/365</li>
-                    <li><span class="check">✓</span> Hospital emergency ready</li>
-                    <li><span class="check">✓</span> Complete in 15 minutes</li>
-                    <li><span class="check">✓</span> HIPAA compliant</li>
-                    <li><span class="check">✓</span> Digital & printed copies</li>
-                </ul>
-                <button class="btn btn-emergency" style="width: 100%; margin-top: 20px;" onclick="startEmergencyPOA()">
-                    🚨 Emergency POA
-                </button>
-            </div>
-
-            <div class="price-box">
-                <h3 class="price-title">Real Estate Documents</h3>
-                <div class="price">$149</div>
-                <ul class="price-features">
-                    <li><span class="check">✓</span> Deeds & titles</li>
-                    <li><span class="check">✓</span> Mortgage documents</li>
-                    <li><span class="check">✓</span> Property transfers</li>
-                    <li><span class="check">✓</span> Refinance paperwork</li>
-                    <li><span class="check">✓</span> Same-day processing</li>
-                </ul>
-                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="startRegularNotary('real-estate')">
-                    📋 Real Estate Docs
-                </button>
-            </div>
-
-            <div class="price-box">
-                <h3 class="price-title">General Documents</h3>
-                <div class="price">$99</div>
-                <ul class="price-features">
-                    <li><span class="check">✓</span> Contracts & agreements</li>
-                    <li><span class="check">✓</span> Affidavits & sworn statements</li>
-                    <li><span class="check">✓</span> Business documents</li>
-                    <li><span class="check">✓</span> Travel authorization</li>
-                    <li><span class="check">✓</span> Standard processing</li>
-                </ul>
-                <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="startRegularNotary('general')">
-                    📄 General Notary
-                </button>
-            </div>
-        </div>
-
-        <!-- Additional Services -->
-        <div style="background: white; padding: 40px; border-radius: 16px; margin: 50px auto; max-width: 800px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
-            <h3 style="text-align: center; margin-bottom: 30px; font-size: 24px;">Additional Notary Services Available</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: center;">
-                <div>
-                    <h4 style="color: #2563eb; margin-bottom: 10px;">Legal Documents</h4>
-                    <ul style="list-style: none; color: #6b7280; line-height: 1.8;">
-                        <li>Wills & Estate Planning</li>
-                        <li>Living Wills</li>
-                        <li>Healthcare Directives</li>
-                        <li>Guardianship Papers</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: #2563eb; margin-bottom: 10px;">Business Documents</h4>
-                    <ul style="list-style: none; color: #6b7280; line-height: 1.8;">
-                        <li>Articles of Incorporation</li>
-                        <li>Operating Agreements</li>
-                        <li>Partnership Agreements</li>
-                        <li>Employment Contracts</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: #2563eb; margin-bottom: 10px;">Personal Documents</h4>
-                    <ul style="list-style: none; color: #6b7280; line-height: 1.8;">
-                        <li>Travel Consent Letters</li>
-                        <li>Name Change Documents</li>
-                        <li>Identity Verification</li>
-                        <li>School Registration</li>
-                    </ul>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <button class="btn btn-secondary" onclick="startRegularNotary('custom')">
-                    💬 Discuss Custom Notarization
-                </button>
-            </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 40px; color: #6b7280;">
-            <p>💳 Secure payment via Stripe • 🔒 SSL encrypted • 📞 24/7 phone support: (602) 555-0199</p>
-        </div>
-    </div>
-
-    <!-- Universal Notary Modal -->
-    <div id="notaryModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle">🚨 Emergency Power of Attorney - Start Now</h2>
-            <p id="modalSubtitle" style="color: #6b7280; margin-bottom: 30px;">Complete this secure form to connect with an Arizona certified notary within 5 minutes.</p>
-
-            <form id="notaryForm">
-                <div class="form-group">
-                    <label for="serviceType">Notary Service Needed *</label>
-                    <select id="serviceType" class="form-control" required>
-                        <option value="">Select service type</option>
-                        <option value="emergency-poa">Emergency Power of Attorney - $349</option>
-                        <option value="real-estate">Real Estate Documents - $149</option>
-                        <option value="general">General Documents - $99</option>
-                        <option value="legal-will">Wills & Estate Planning - $199</option>
-                        <option value="business">Business Documents - $129</option>
-                        <option value="travel">Travel Authorization - $89</option>
-                        <option value="affidavit">Affidavits & Sworn Statements - $99</option>
-                        <option value="custom">Custom/Other (Call for Quote)</option>
-                    </select>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" class="form-control" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="(602) 555-0199" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Current Location *</label>
-                    <input type="text" id="location" class="form-control" placeholder="City, State or specific address if emergency" required>
-                </div>
-
-                <div class="form-group" id="urgencyGroup">
-                    <label for="urgency">Urgency Level *</label>
-                    <select id="urgency" class="form-control" required>
-                        <option value="">Select urgency level</option>
-                        <option value="immediate">🔴 IMMEDIATE - Need notary right now</option>
-                        <option value="within-hour">🟡 Within 1 hour</option>
-                        <option value="within-day">🟢 Within today</option>
-                        <option value="next-day">🟢 Within 24 hours</option>
-                        <option value="flexible">🟢 Flexible timing</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="documentType">Document Details</label>
-                    <textarea id="documentType" class="form-control" rows="3" placeholder="Brief description of documents to be notarized..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="additionalInfo">Additional Information (Optional)</label>
-                    <textarea id="additionalInfo" class="form-control" rows="2" placeholder="Any special requirements or questions..."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="consent" required>
-                        <label for="consent">
-                            I consent to video recording of the notarization session as required by Arizona law, and I agree to the
-                            <a href="#" style="color: #2563eb;">Terms of Service</a> and
-                            <a href="#" style="color: #2563eb;">Privacy Policy</a>.
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="identity" required>
-                        <label for="identity">
-                            I confirm I have a valid government-issued photo ID ready for verification.
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="documents" required>
-                        <label for="documents">
-                            I have the documents ready to notarize or understand the documents will be provided during the session.
-                        </label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-emergency" id="submitBtn" style="width: 100%; margin-top: 20px;">
-                    💳 Pay & Connect with Notary Now
-                </button>
-
-                <p style="text-align: center; margin-top: 16px; color: #6b7280; font-size: 14px;">
-                    🔒 Secure SSL encryption • 💳 Processed by Stripe • 📞 Support: (602) 555-0199
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        // Stripe Payment Integration
-        const stripe = Stripe('pk_test_51234567890abcdef'); // Replace with your Stripe publishable key
-
-        function startEmergencyPOA() {
-            // Pre-select emergency POA service
-            document.getElementById('serviceType').value = 'emergency-poa';
-            updateModalForService('emergency-poa');
-            document.getElementById('notaryModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function startRegularNotary(serviceType = '') {
-            if (serviceType) {
-                document.getElementById('serviceType').value = serviceType;
-                updateModalForService(serviceType);
-            }
-            document.getElementById('notaryModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('notaryModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function updateModalForService(serviceType) {
-            const modalTitle = document.getElementById('modalTitle');
-            const modalSubtitle = document.getElementById('modalSubtitle');
-            const submitBtn = document.getElementById('submitBtn');
-            const urgencyGroup = document.getElementById('urgencyGroup');
-            const locationField = document.getElementById('location');
-
-            switch(serviceType) {
-                case 'emergency-poa':
-                    modalTitle.innerHTML = '🚨 Emergency Power of Attorney - Start Now';
-                    modalSubtitle.innerHTML = 'Complete this secure form to connect with an Arizona certified notary within 5 minutes.';
-                    submitBtn.innerHTML = '💳 Pay $349 & Connect with Notary Now';
-                    locationField.placeholder = 'Hospital name or current address';
-                    urgencyGroup.style.display = 'block';
-                    break;
-                case 'real-estate':
-                    modalTitle.innerHTML = '🏠 Real Estate Document Notarization';
-                    modalSubtitle.innerHTML = 'Professional notary services for deeds, mortgages, and property documents.';
-                    submitBtn.innerHTML = '💳 Pay $149 & Schedule Notary';
-                    locationField.placeholder = 'City, State';
-                    urgencyGroup.style.display = 'block';
-                    break;
-                case 'general':
-                    modalTitle.innerHTML = '📄 General Document Notarization';
-                    modalSubtitle.innerHTML = 'Notarization for contracts, affidavits, and general business documents.';
-                    submitBtn.innerHTML = '💳 Pay $99 & Schedule Notary';
-                    locationField.placeholder = 'City, State';
-                    urgencyGroup.style.display = 'block';
-                    break;
-                case 'custom':
-                    modalTitle.innerHTML = '💬 Custom Notarization Service';
-                    modalSubtitle.innerHTML = 'Describe your specific notarization needs for a custom quote.';
-                    submitBtn.innerHTML = '📞 Get Custom Quote & Connect';
-                    locationField.placeholder = 'City, State';
-                    urgencyGroup.style.display = 'block';
-                    break;
-                default:
-                    modalTitle.innerHTML = '📄 Online Notary Service';
-                    modalSubtitle.innerHTML = 'Connect with an Arizona certified notary for professional document services.';
-                    submitBtn.innerHTML = '💳 Pay & Connect with Notary';
-                    locationField.placeholder = 'City, State';
-                    urgencyGroup.style.display = 'block';
-            }
-        }
-
-        function showHowItWorks() {
-            document.querySelector('.how-it-works').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('notaryModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Update modal when service type changes
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('serviceType').addEventListener('change', function(e) {
-                updateModalForService(e.target.value);
-            });
-        });
-
-        // Form submission
-        document.getElementById('notaryForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            // Collect form data
-            const formData = {
-                serviceType: document.getElementById('serviceType').value,
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                location: document.getElementById('location').value,
-                urgency: document.getElementById('urgency').value,
-                documentType: document.getElementById('documentType').value,
-                additionalInfo: document.getElementById('additionalInfo').value,
-                timestamp: new Date().toISOString()
-            };
-
-            // Show loading state
-            const submitBtn = e.target.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '⏳ Processing Payment...';
-            submitBtn.disabled = true;
-
-            try {
-                // Here you would integrate with Stripe and your backend
-                // For now, simulate the process
-                await new Promise(resolve => setTimeout(resolve, 2000));
-
-                // Success - redirect to video call or show success message
-                const serviceTypes = {
-                    'emergency-poa': 'Emergency Power of Attorney',
-                    'real-estate': 'Real Estate Documents',
-                    'general': 'General Documents',
-                    'legal-will': 'Wills & Estate Planning',
-                    'business': 'Business Documents',
-                    'travel': 'Travel Authorization',
-                    'affidavit': 'Affidavits & Sworn Statements',
-                    'custom': 'Custom Service'
-                };
-
-                const serviceName = serviceTypes[formData.serviceType] || 'Notary Service';
-                const timeframe = formData.urgency === 'immediate' ? '5 minutes' :
-                                 formData.urgency === 'within-hour' ? '1 hour' :
-                                 formData.urgency === 'within-day' ? '4 hours' : '24 hours';
-
-                alert(`Thank you ${formData.firstName}! Your ${serviceName} request has been processed.\n\nA certified Arizona notary will contact you at ${formData.phone} within ${timeframe}.\n\nSession ID: ${formData.serviceType.toUpperCase()}-${Date.now()}\n\nCheck your email for video call instructions.`);
-
-                // Close modal and reset form
-                closeModal();
-                document.getElementById('notaryForm').reset();
-
-                // In a real implementation, you'd:
-                // 1. Process payment with Stripe
-                // 2. Save customer data to database
-                // 3. Trigger notary notification system
-                // 4. Send confirmation email
-                // 5. Redirect to video call platform
-
-            } catch (error) {
-                alert('Payment failed. Please try again or call (602) 555-0199 for immediate assistance.\n\nFor emergencies, our phone support can process payments over the phone.');
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-
-        // Phone number formatting
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 6) {
-                value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6,10)}`;
-            } else if (value.length >= 3) {
-                value = `(${value.slice(0,3)}) ${value.slice(3)}`;
-            }
-            e.target.value = value;
-        });
-
-        // Update live indicator numbers periodically
-        function updateLiveIndicators() {
-            const count = Math.floor(Math.random() * 3) + 4; // 4-6 notaries
-            const avgTime = Math.floor(Math.random() * 3) + 2; // 2-4 minutes
-            document.querySelector('.emergency-banner').innerHTML = `
-                <span class="live-indicator"></span>
-                🚨 LIVE NOW: Emergency POA Service • <strong>${count} Notaries Online</strong> • Average Response: ${avgTime} minutes
-            `;
-        }
-
-        // Update every 30 seconds
-        setInterval(updateLiveIndicators, 30000);
-    </script>
-</body>
-</html>
+  );
+}
