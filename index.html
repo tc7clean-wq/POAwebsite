@@ -1,213 +1,865 @@
-import { useState } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DirectNotary - Online Notary for All 50 States | $25</title>
+    <meta name="description" content="Get documents notarized online from anywhere in America. Licensed Arizona notaries serving all 50 states. Available 24/7.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-export default function Home() {
-  return (
-    <div>
-      {/* Compliance Banner */}
-      <div className="bg-yellow-100 p-3 text-center text-sm">
-        ⚠️ All sessions recorded per Arizona law | 18+ with valid ID | Legally valid in all 50 states
-      </div>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+        }
 
-      {/* Nationwide Banner */}
-      <div className="bg-green-600 text-white py-2 text-center font-bold">
-        NATIONWIDE SERVICE - Serving All 50 States + DC + U.S. Territories
-      </div>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-      {/* Hero Section */}
-      <section className="bg-blue-900 text-white py-20 text-center">
-        <h1 className="text-5xl font-bold mb-4">Online Notary for All 50 States</h1>
-        <h2 className="text-2xl mb-6">Licensed Arizona RON Notaries Serving the Entire USA</h2>
-        <p className="text-lg mb-8 max-w-3xl mx-auto">
-          Get documents notarized from anywhere in America. Federal law requires all states 
-          to accept notarizations from our Arizona-licensed notaries.
-        </p>
-        
-        {/* State Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 max-w-4xl mx-auto mb-8 text-sm">
-          <div>✓ California</div>
-          <div>✓ Texas</div>
-          <div>✓ New York</div>
-          <div>✓ Florida</div>
-          <div>✓ Illinois</div>
-          <div>✓ All Others</div>
-        </div>
+        /* Header Styles */
+        .compliance-banner {
+            background: #fef3c7;
+            padding: 8px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 2px solid #fbbf24;
+        }
 
-        <div className="space-x-4">
-          <button 
-            onClick={() => window.location.href='/book'}
-            className="bg-green-500 px-8 py-4 rounded text-lg font-semibold hover:bg-green-600"
-          >
-            Start Now - Any State - $25
-          </button>
-          <button 
-            onClick={() => window.location.href='/book?type=emergency'}
-            className="bg-red-500 px-8 py-4 rounded text-lg font-semibold hover:bg-red-600"
-          >
-            Emergency 24/7 - $75
-          </button>
-        </div>
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        <div className="mt-8 text-sm">
-          🎉 First-Time Special: First Notarization FREE (pay only if satisfied)
-        </div>
-      </section>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
 
-      {/* Why It's Legal Nationwide */}
-      <section className="py-16 px-8 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-8">Why It's Legal in Your State</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded shadow">
-              <h3 className="font-bold mb-3">🏛️ Federal Law</h3>
-              <p className="text-sm">The Full Faith and Credit Clause of the U.S. Constitution requires 
-              all states to recognize notarizations from other states.</p>
-            </div>
-            <div className="bg-white p-6 rounded shadow">
-              <h3 className="font-bold mb-3">⚖️ Interstate Recognition</h3>
-              <p className="text-sm">Your bank, court, or agency must accept our Arizona notarization 
-              by law, regardless of your state.</p>
-            </div>
-            <div className="bg-white p-6 rounded shadow">
-              <h3 className="font-bold mb-3">✅ Fully Compliant</h3>
-              <p className="text-sm">Our notaries follow Arizona RON laws which meet or exceed 
-              federal standards for identity verification.</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-      {/* Pricing Section */}
-      <section className="py-16 px-8 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-4">Simple Pricing for All States</h2>
-        <p className="text-center text-gray-600 mb-12">Same low price whether you're in Alaska or Alabama</p>
-        
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="border-2 border-gray-200 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">Standard</h3>
-            <p className="text-4xl font-bold text-green-600 mb-4">$25</p>
-            <p className="text-sm text-gray-600 mb-4">Available in all 50 states</p>
-            <ul className="space-y-2">
-              <li>✓ Single document</li>
-              <li>✓ Within 4 hours</li>
-              <li>✓ Business hours</li>
-              <li>✓ Valid nationwide</li>
-            </ul>
-            <button className="w-full mt-6 bg-blue-500 text-white py-3 rounded hover:bg-blue-600">
-              Book Standard
-            </button>
-          </div>
+        .logo span:first-child {
+            color: #3b82f6;
+        }
 
-          <div className="border-2 border-blue-500 p-8 rounded-lg relative">
-            <span className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded text-sm">
-              MOST POPULAR
-            </span>
-            <h3 className="text-2xl font-bold mb-4">Priority</h3>
-            <p className="text-4xl font-bold text-blue-600 mb-4">$45</p>
-            <p className="text-sm text-gray-600 mb-4">Faster service, any state</p>
-            <ul className="space-y-2">
-              <li>✓ Within 1 hour</li>
-              <li>✓ Extended hours</li>
-              <li>✓ Text updates</li>
-              <li>✓ Priority support</li>
-            </ul>
-            <button className="w-full mt-6 bg-blue-500 text-white py-3 rounded hover:bg-blue-600">
-              Book Priority
-            </button>
-          </div>
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
 
-          <div className="border-2 border-red-500 p-8 rounded-lg">
-            <h3 className="text-2xl font-bold mb-4">Emergency</h3>
-            <p className="text-4xl font-bold text-red-600 mb-4">$75</p>
-            <p className="text-sm text-gray-600 mb-4">24/7 service, all states</p>
-            <ul className="space-y-2">
-              <li>✓ 30 minutes or less</li>
-              <li>✓ Nights/weekends</li>
-              <li>✓ Hospital/urgent</li>
-              <li>✓ Phone support</li>
-            </ul>
-            <button className="w-full mt-6 bg-red-500 text-white py-3 rounded hover:bg-red-600">
-              Emergency Now
-            </button>
-          </div>
-        </div>
-      </section>
+        .nav-links a {
+            color: #4b5563;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
 
-      {/* States We Serve */}
-      <section className="bg-blue-50 py-16 px-8">
-        <h2 className="text-3xl font-bold text-center mb-8">We Serve Every State</h2>
-        <div className="max-w-6xl mx-auto text-center text-sm">
-          <p className="font-semibold mb-4">All 50 States + DC + U.S. Territories:</p>
-          <p className="text-gray-700 leading-relaxed">
-            Alabama • Alaska • Arizona • Arkansas • California • Colorado • Connecticut • Delaware • 
-            Florida • Georgia • Hawaii • Idaho • Illinois • Indiana • Iowa • Kansas • Kentucky • 
-            Louisiana • Maine • Maryland • Massachusetts • Michigan • Minnesota • Mississippi • 
-            Missouri • Montana • Nebraska • Nevada • New Hampshire • New Jersey • New Mexico • 
-            New York • North Carolina • North Dakota • Ohio • Oklahoma • Oregon • Pennsylvania • 
-            Rhode Island • South Carolina • South Dakota • Tennessee • Texas • Utah • Vermont • 
-            Virginia • Washington • West Virginia • Wisconsin • Wyoming • Washington D.C. • 
-            Puerto Rico • U.S. Virgin Islands • Guam • American Samoa
-          </p>
-        </div>
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
 
-        <div className="mt-12 max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-6 rounded shadow">
-            <h3 className="font-bold mb-3">🌎 International Customers Welcome</h3>
-            <p className="text-sm">U.S. citizens abroad, military overseas, and international 
-            business transactions. We serve customers in 140+ countries.</p>
-          </div>
-          <div className="bg-white p-6 rounded shadow">
-            <h3 className="font-bold mb-3">🏥 Specialists in Emergency Situations</h3>
-            <p className="text-sm">Hospital bedside POAs, urgent real estate closings, 
-            time-sensitive legal documents. Available 24/7 nationwide.</p>
-          </div>
-        </div>
-      </section>
+        .mobile-menu {
+            display: none;
+        }
 
-      {/* FAQ Section */}
-      <section className="py-16 px-8 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Nationwide Service FAQs</h2>
-        <div className="space-y-6">
-          <div className="border-b pb-4">
-            <h3 className="font-bold mb-2">I'm in California. Is an Arizona online notarization legal here?</h3>
-            <p className="text-gray-700">Yes. Federal law and the Full Faith and Credit Clause require 
-            California and all other states to recognize properly performed notarizations from Arizona.</p>
-          </div>
-          <div className="border-b pb-4">
-            <h3 className="font-bold mb-2">Will my bank in New York accept this?</h3>
-            <p className="text-gray-700">Yes. Banks, courts, and government agencies in all 50 states must 
-            accept our notarizations. We provide a certificate that confirms federal validity.</p>
-          </div>
-          <div className="border-b pb-4">
-            <h3 className="font-bold mb-2">Which states can use your service?</h3>
-            <p className="text-gray-700">All 50 states, Washington D.C., and U.S. territories. We also serve 
-            U.S. citizens living abroad and military personnel stationed overseas.</p>
-          </div>
-          <div className="border-b pb-4">
-            <h3 className="font-bold mb-2">Do you have notaries in my state?</h3>
-            <p className="text-gray-700">Our notaries are licensed in Arizona and perform all notarizations 
-            from Arizona, which makes them legally valid nationwide under federal interstate recognition laws.</p>
-          </div>
-        </div>
-      </section>
+        /* Button Styles */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-8 text-center">
-        <p className="text-2xl font-bold mb-4">Nationwide Online Notary Service</p>
-        <p className="mb-2">DirectNotary LLC | Arizona Entity #23888463</p>
-        <p className="mb-4 text-sm">Licensed Arizona notaries serving all 50 states</p>
-        <p className="text-sm text-gray-400 mb-6">
-          Platform service connecting customers nationwide with licensed Arizona RON notaries
-        </p>
-        <div className="space-x-4">
-          <a href="/terms" className="text-blue-400 hover:underline">Terms</a>
-          <a href="/privacy" className="text-blue-400 hover:underline">Privacy</a>
-          <a href="/states" className="text-blue-400 hover:underline">State Laws</a>
-        </div>
-        <p className="text-xs text-gray-500 mt-6">
-          Not a law firm. Cannot provide legal advice. Notarizations performed under Arizona law 
-          and recognized nationwide under federal interstate recognition requirements.
-        </p>
-      </footer>
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(16,185,129,0.3);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(239,68,68,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #10b981;
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .price-card {
+            text-align: center;
+            position: relative;
+            border: 2px solid #e5e7eb;
+        }
+
+        .price-card.featured {
+            border-color: #3b82f6;
+        }
+
+        .price-card .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #3b82f6;
+            margin: 20px 0;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #3b82f6;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-gray {
+            background: #f9fafb;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        }
+
+        /* Forms */
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 50px 20px 30px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section {
+                padding: 40px 20px;
+            }
+        }
+
+        /* States Grid */
+        .states-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 30px 0;
+            font-size: 14px;
+        }
+
+        .state-item {
+            padding: 8px;
+            text-align: center;
+            background: #f3f4f6;
+            border-radius: 4px;
+        }
+
+        /* Page visibility */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Compliance Banner -->
+    <div class="compliance-banner">
+        ⚖️ All sessions recorded per Arizona law | Valid in all 50 states | Must be 18+ with government ID
     </div>
-  );
-}
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" onclick="showPage('home')">
+                    <span>Direct</span><span>Notary</span>
+                </div>
+                <div class="nav-links" id="navLinks">
+                    <a onclick="showPage('home')">Home</a>
+                    <a onclick="showPage('how')">How It Works</a>
+                    <a onclick="showPage('pricing')">Pricing</a>
+                    <a onclick="showPage('states')">All States</a>
+                    <button class="btn btn-primary" onclick="showPage('book')">Book Now - $25</button>
+                </div>
+                <button class="mobile-menu" onclick="toggleMenu()">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="badge">SERVING ALL 50 STATES + DC</div>
+                <h1>Online Notary Service for Every State in America</h1>
+                <p>Get any document notarized online in minutes. Our licensed Arizona notaries provide legally valid notarizations for customers nationwide, 24/7.</p>
+                
+                <div class="buttons">
+                    <button class="btn btn-success" onclick="showPage('book')">Book Standard - $25</button>
+                    <button class="btn btn-danger" onclick="showPage('book')">Emergency 24/7 - $75</button>
+                </div>
+
+                <p style="margin-top: 30px; font-size: 16px;">🎉 First-Time Special: FREE first notarization (pay only if satisfied)</p>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Why It's Legal in All 50 States</h2>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <h3 style="color: #3b82f6; margin-bottom: 15px;">🏛️ Federal Law Protection</h3>
+                        <p>The Full Faith and Credit Clause of the U.S. Constitution requires all states to recognize notarizations performed in other states.</p>
+                    </div>
+                    <div class="card">
+                        <h3 style="color: #3b82f6; margin-bottom: 15px;">⚖️ Interstate Recognition</h3>
+                        <p>Your bank, court, or agency in any state must legally accept our Arizona notarization. It's federal law.</p>
+                    </div>
+                    <div class="card">
+                        <h3 style="color: #3b82f6; margin-bottom: 15px;">✅ Fully Compliant</h3>
+                        <p>Arizona RON laws meet or exceed federal standards for identity verification and document security.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Preview -->
+        <section class="section section-gray">
+            <div class="container">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <div class="grid grid-3">
+                    <div class="card price-card">
+                        <h3>Standard</h3>
+                        <div class="price">$25</div>
+                        <p style="margin-bottom: 20px;">Perfect for planned notarizations</p>
+                        <ul style="list-style: none; padding: 0; text-align: left;">
+                            <li>✓ Single document</li>
+                            <li>✓ Within 4 hours</li>
+                            <li>✓ Business hours</li>
+                            <li>✓ Email delivery</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="showPage('book')">Choose Standard</button>
+                    </div>
+                    
+                    <div class="card price-card featured">
+                        <span class="popular-badge">MOST POPULAR</span>
+                        <h3>Priority</h3>
+                        <div class="price">$45</div>
+                        <p style="margin-bottom: 20px;">Faster service when you need it</p>
+                        <ul style="list-style: none; padding: 0; text-align: left;">
+                            <li>✓ Within 1 hour</li>
+                            <li>✓ Extended hours</li>
+                            <li>✓ Text updates</li>
+                            <li>✓ Priority support</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="showPage('book')">Choose Priority</button>
+                    </div>
+                    
+                    <div class="card price-card">
+                        <h3>Emergency</h3>
+                        <div class="price" style="color: #ef4444;">$75</div>
+                        <p style="margin-bottom: 20px;">Urgent situations, available 24/7</p>
+                        <ul style="list-style: none; padding: 0; text-align: left;">
+                            <li>✓ 30 minutes or less</li>
+                            <li>✓ Available 24/7/365</li>
+                            <li>✓ Hospital/urgent</li>
+                            <li>✓ Phone support</li>
+                        </ul>
+                        <button class="btn btn-danger" style="width: 100%; margin-top: 20px;" onclick="showPage('book')">Emergency Service</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- How It Works Page -->
+    <div id="howPage" class="page">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">How Online Notarization Works</h1>
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 1: Book Your Service</h2>
+                        <p>Choose your service level (Standard $25, Priority $45, or Emergency $75) and provide your information. Payment is processed securely through our platform.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 2: Upload Your Document</h2>
+                        <p>Upload your document in PDF, JPG, or PNG format. You can also take a photo with your phone. Make sure all fields are filled out before the notarization.</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 3: Verify Your Identity</h2>
+                        <p>Show your government-issued photo ID to the notary. You'll answer a few security questions to verify your identity (knowledge-based authentication).</p>
+                    </div>
+                    
+                    <div class="card" style="margin-bottom: 30px;">
+                        <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 4: Connect with Notary</h2>
+                        <p>Join a secure video call with your assigned Arizona notary. The session is recorded for legal compliance. The notary will guide you through the signing process.</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 5: Receive Your Document</h2>
+                        <p>After notarization, you'll immediately receive your notarized document as a PDF with the notary's digital seal and certificate. This is legally valid in all 50 states.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 50px;">
+                    <button class="btn btn-primary" onclick="showPage('book')">Start Your Notarization</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Pricing Page -->
+    <div id="pricingPage" class="page">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">Pricing & Packages</h1>
+                
+                <div class="grid grid-3">
+                    <div class="card price-card">
+                        <h3>Standard Service</h3>
+                        <div class="price">$25</div>
+                        <p style="color: #6b7280; margin-bottom: 20px;">Per document</p>
+                        <ul style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px;">
+                            <li>✓ Single document notarization</li>
+                            <li>✓ Completed within 4 hours</li>
+                            <li>✓ Monday-Friday, 9am-5pm MST</li>
+                            <li>✓ Email delivery of notarized PDF</li>
+                            <li>✓ Valid in all 50 states</li>
+                            <li>✓ Recorded session (required by law)</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="showPage('book')">Book Standard</button>
+                    </div>
+                    
+                    <div class="card price-card featured">
+                        <span class="popular-badge">BEST VALUE</span>
+                        <h3>Priority Service</h3>
+                        <div class="price">$45</div>
+                        <p style="color: #6b7280; margin-bottom: 20px;">Per document</p>
+                        <ul style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px;">
+                            <li>✓ Everything in Standard</li>
+                            <li>✓ Completed within 1 hour</li>
+                            <li>✓ Extended hours (7am-9pm MST)</li>
+                            <li>✓ SMS text updates</li>
+                            <li>✓ Priority queue placement</li>
+                            <li>✓ Dedicated support line</li>
+                        </ul>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="showPage('book')">Book Priority</button>
+                    </div>
+                    
+                    <div class="card price-card">
+                        <h3>Emergency Service</h3>
+                        <div class="price" style="color: #ef4444;">$75</div>
+                        <p style="color: #6b7280; margin-bottom: 20px;">Per document</p>
+                        <ul style="list-style: none; padding: 0; text-align: left; margin-bottom: 20px;">
+                            <li>✓ Everything in Priority</li>
+                            <li>✓ 30 minutes or less</li>
+                            <li>✓ Available 24/7/365</li>
+                            <li>✓ Hospital bedside service</li>
+                            <li>✓ Direct phone line to notary</li>
+                            <li>✓ Crisis situation priority</li>
+                        </ul>
+                        <button class="btn btn-danger" style="width: 100%;" onclick="showPage('book')">Book Emergency</button>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 50px; background: #f0f9ff; border: 2px solid #3b82f6;">
+                    <h3 style="text-align: center; color: #3b82f6;">📦 Bundle Packages</h3>
+                    <div class="grid grid-2" style="margin-top: 20px;">
+                        <div>
+                            <h4>3 Document Bundle</h4>
+                            <p class="price" style="color: #10b981;">$59</p>
+                            <p>Save $16 on three documents</p>
+                        </div>
+                        <div>
+                            <h4>Monthly Unlimited</h4>
+                            <p class="price" style="color: #10b981;">$299</p>
+                            <p>Perfect for businesses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- States Page -->
+    <div id="statesPage" class="page">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">We Serve All 50 States + DC</h1>
+                
+                <div class="card" style="background: #f0f9ff; border: 2px solid #3b82f6; margin-bottom: 40px;">
+                    <p style="text-align: center; font-size: 18px; margin-bottom: 10px;">
+                        <strong>Yes, we serve your state!</strong> Arizona Remote Online Notarizations are legally valid and must be accepted in all 50 states under federal law.
+                    </p>
+                </div>
+
+                <div class="states-grid">
+                    <div class="state-item">Alabama</div>
+                    <div class="state-item">Alaska</div>
+                    <div class="state-item">Arizona</div>
+                    <div class="state-item">Arkansas</div>
+                    <div class="state-item">California</div>
+                    <div class="state-item">Colorado</div>
+                    <div class="state-item">Connecticut</div>
+                    <div class="state-item">Delaware</div>
+                    <div class="state-item">Florida</div>
+                    <div class="state-item">Georgia</div>
+                    <div class="state-item">Hawaii</div>
+                    <div class="state-item">Idaho</div>
+                    <div class="state-item">Illinois</div>
+                    <div class="state-item">Indiana</div>
+                    <div class="state-item">Iowa</div>
+                    <div class="state-item">Kansas</div>
+                    <div class="state-item">Kentucky</div>
+                    <div class="state-item">Louisiana</div>
+                    <div class="state-item">Maine</div>
+                    <div class="state-item">Maryland</div>
+                    <div class="state-item">Massachusetts</div>
+                    <div class="state-item">Michigan</div>
+                    <div class="state-item">Minnesota</div>
+                    <div class="state-item">Mississippi</div>
+                    <div class="state-item">Missouri</div>
+                    <div class="state-item">Montana</div>
+                    <div class="state-item">Nebraska</div>
+                    <div class="state-item">Nevada</div>
+                    <div class="state-item">New Hampshire</div>
+                    <div class="state-item">New Jersey</div>
+                    <div class="state-item">New Mexico</div>
+                    <div class="state-item">New York</div>
+                    <div class="state-item">North Carolina</div>
+                    <div class="state-item">North Dakota</div>
+                    <div class="state-item">Ohio</div>
+                    <div class="state-item">Oklahoma</div>
+                    <div class="state-item">Oregon</div>
+                    <div class="state-item">Pennsylvania</div>
+                    <div class="state-item">Rhode Island</div>
+                    <div class="state-item">South Carolina</div>
+                    <div class="state-item">South Dakota</div>
+                    <div class="state-item">Tennessee</div>
+                    <div class="state-item">Texas</div>
+                    <div class="state-item">Utah</div>
+                    <div class="state-item">Vermont</div>
+                    <div class="state-item">Virginia</div>
+                    <div class="state-item">Washington</div>
+                    <div class="state-item">West Virginia</div>
+                    <div class="state-item">Wisconsin</div>
+                    <div class="state-item">Wyoming</div>
+                    <div class="state-item" style="background: #3b82f6; color: white;">Washington D.C.</div>
+                </div>
+
+                <div class="grid grid-2" style="margin-top: 50px;">
+                    <div class="card">
+                        <h3 style="color: #3b82f6;">🌎 International Service</h3>
+                        <p>We also serve U.S. citizens living abroad, military personnel overseas, and international businesses needing U.S. notarizations.</p>
+                    </div>
+                    <div class="card">
+                        <h3 style="color: #3b82f6;">🏥 Hospital & Emergency</h3>
+                        <p>Specialized service for urgent situations. Hospital bedside POAs, emergency real estate closings, and time-sensitive documents.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Booking Page -->
+    <div id="bookPage" class="page">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">Book Your Notarization</h1>
+                
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <form onsubmit="handleBooking(event)">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" required placeholder="John Smith">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" required placeholder="john@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" required placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Your State *</label>
+                            <select required>
+                                <option value="">Select your state...</option>
+                                <option>Alabama</option>
+                                <option>Alaska</option>
+                                <option>Arizona</option>
+                                <option>Arkansas</option>
+                                <option>California</option>
+                                <option>Colorado</option>
+                                <option>Connecticut</option>
+                                <option>Delaware</option>
+                                <option>Florida</option>
+                                <option>Georgia</option>
+                                <option>Hawaii</option>
+                                <option>Idaho</option>
+                                <option>Illinois</option>
+                                <option>Indiana</option>
+                                <option>Iowa</option>
+                                <option>Kansas</option>
+                                <option>Kentucky</option>
+                                <option>Louisiana</option>
+                                <option>Maine</option>
+                                <option>Maryland</option>
+                                <option>Massachusetts</option>
+                                <option>Michigan</option>
+                                <option>Minnesota</option>
+                                <option>Mississippi</option>
+                                <option>Missouri</option>
+                                <option>Montana</option>
+                                <option>Nebraska</option>
+                                <option>Nevada</option>
+                                <option>New Hampshire</option>
+                                <option>New Jersey</option>
+                                <option>New Mexico</option>
+                                <option>New York</option>
+                                <option>North Carolina</option>
+                                <option>North Dakota</option>
+                                <option>Ohio</option>
+                                <option>Oklahoma</option>
+                                <option>Oregon</option>
+                                <option>Pennsylvania</option>
+                                <option>Rhode Island</option>
+                                <option>South Carolina</option>
+                                <option>South Dakota</option>
+                                <option>Tennessee</option>
+                                <option>Texas</option>
+                                <option>Utah</option>
+                                <option>Vermont</option>
+                                <option>Virginia</option>
+                                <option>Washington</option>
+                                <option>West Virginia</option>
+                                <option>Wisconsin</option>
+                                <option>Wyoming</option>
+                                <option>District of Columbia</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Document Type *</label>
+                            <select required>
+                                <option value="">Select document type...</option>
+                                <option>Power of Attorney</option>
+                                <option>Real Estate Document</option>
+                                <option>Affidavit</option>
+                                <option>Business Agreement</option>
+                                <option>Vehicle Title</option>
+                                <option>Financial Document</option>
+                                <option>Legal Document</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Service Level *</label>
+                            <div style="display: flex; flex-direction: column; gap: 15px;">
+                                <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                                    <input type="radio" name="service" value="standard" checked style="width: auto; margin-right: 15px;">
+                                    <div>
+                                        <strong>Standard - $25</strong>
+                                        <p style="margin: 0; font-size: 14px; color: #6b7280;">Within 4 hours, business hours</p>
+                                    </div>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                                    <input type="radio" name="service" value="priority" style="width: auto; margin-right: 15px;">
+                                    <div>
+                                        <strong>Priority - $45</strong>
+                                        <p style="margin: 0; font-size: 14px; color: #6b7280;">Within 1 hour, extended hours</p>
+                                    </div>
+                                </label>
+                                
+                                <label style="display: flex; align-items: center; padding: 15px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer;">
+                                    <input type="radio" name="service" value="emergency" style="width: auto; margin-right: 15px;">
+                                    <div>
+                                        <strong>Emergency - $75</strong>
+                                        <p style="margin: 0; font-size: 14px; color: #6b7280;">30 minutes or less, 24/7</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Special Instructions</label>
+                            <textarea rows="4" placeholder="Hospital room number, urgency details, special requirements..."></textarea>
+                        </div>
+                        
+                        <div style="background: #fef3c7; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                            <p style="font-size: 14px; margin: 0;">
+                                <strong>Legal Notice:</strong> By proceeding, you consent to audio-video recording of the notarization session as required by Arizona law. You must be 18+ with valid government ID.
+                            </p>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 18px;">
+                            Proceed to Payment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3 style="font-size: 24px; margin-bottom: 10px;">DirectNotary</h3>
+            <p style="margin-bottom: 20px;">Licensed Arizona Notaries Serving All 50 States</p>
+            
+            <p style="font-size: 14px; margin-bottom: 10px;">DirectNotary LLC | Arizona Entity #23888463</p>
+            <p style="font-size: 14px; margin-bottom: 20px;">Platform connecting customers with licensed RON notaries</p>
+            
+            <div style="margin: 20px 0;">
+                <a href="#" onclick="alert('Terms of Service page')">Terms</a> | 
+                <a href="#" onclick="alert('Privacy Policy page')">Privacy</a> | 
+                <a href="#" onclick="showPage('states')">All States</a>
+            </div>
+            
+            <p style="font-size: 12px; color: #9ca3af; margin-top: 30px;">
+                Not a law firm. Cannot provide legal advice. Notarizations performed under Arizona law and recognized nationwide under federal interstate recognition requirements. All sessions recorded per A.R.S. § 41-374.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Page navigation
+        function showPage(pageName) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            if (pageName === 'home') {
+                document.getElementById('homePage').classList.add('active');
+            } else if (pageName === 'how') {
+                document.getElementById('howPage').classList.add('active');
+            } else if (pageName === 'pricing') {
+                document.getElementById('pricingPage').classList.add('active');
+            } else if (pageName === 'states') {
+                document.getElementById('statesPage').classList.add('active');
+            } else if (pageName === 'book') {
+                document.getElementById('bookPage').classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Close mobile menu if open
+            document.getElementById('navLinks').classList.remove('active');
+        }
+        
+        // Toggle mobile menu
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        
+        // Handle booking form submission
+        function handleBooking(event) {
+            event.preventDefault();
+            alert('Thank you for your booking! You will be redirected to payment. Our team will contact you within 15 minutes to complete your notarization.');
+            // Here you would integrate with Stripe or PayPal
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
