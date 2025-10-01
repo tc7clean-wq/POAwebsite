@@ -1,185 +1,180 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Direct Notary LLC — Online Notary Service</title>
-  <meta name="description" content="Nationwide online notarization. Secure, fast, and valid in all 50 states. Starting at $39.">
+  <meta name="description" content="Secure online notarization in all 50 states. Fast, legal, and affordable. Starting at $39."/>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_SANDBOX_CLIENT_ID"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
   <style>
-    .fade-up { opacity:0; transform:translateY(12px); transition:.6s; }
-    .fade-up.show { opacity:1; transform:none; }
+    .fade-up {opacity:0; transform:translateY(20px); transition:all .6s ease;}
+    .fade-up.show {opacity:1; transform:none;}
   </style>
 </head>
-<body class="bg-gradient-to-b from-slate-50 to-white text-slate-900">
+<body class="bg-slate-50 text-slate-900 antialiased">
 
   <!-- NAV -->
-  <nav class="w-full bg-white/80 backdrop-blur border-b">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center gap-3">
-        <div class="bg-blue-600 w-10 h-10 flex items-center justify-center rounded text-white font-bold">DN</div>
+  <nav class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="bg-blue-600 text-white font-bold px-3 py-1 rounded">DN</div>
         <span class="font-bold text-lg">Direct Notary LLC</span>
       </div>
-      <div class="hidden md:flex gap-6 text-sm">
+      <div class="hidden md:flex gap-8 text-sm font-medium">
         <a href="#how" class="hover:text-blue-600">How It Works</a>
         <a href="#pricing" class="hover:text-blue-600">Pricing</a>
         <a href="#faq" class="hover:text-blue-600">FAQ</a>
       </div>
-      <a href="#form" class="bg-blue-600 text-white px-4 py-2 rounded hover:opacity-90 text-sm shadow">Start Now</a>
+      <a href="#form" class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:opacity-90 text-sm">Start Now</a>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
-    <div class="fade-up">
-      <h1 class="text-4xl font-extrabold mb-4">Online Notary Service — Valid in All 50 States</h1>
-      <p class="text-lg text-slate-600 mb-6">Notarize your documents securely and legally in minutes. No appointments, no travel — just upload, pay, and connect with a licensed notary.</p>
-      <div class="flex gap-4">
-        <a href="#form" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:opacity-90">Start Notarization</a>
-        <a href="#pricing" class="text-blue-600 underline font-medium">See Pricing</a>
+  <section class="pt-32 pb-20 bg-gradient-to-br from-blue-600 to-cyan-500 text-white">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="fade-up">
+        <h1 class="text-5xl font-extrabold leading-tight mb-6">Notarize Documents Online in Minutes</h1>
+        <p class="text-lg mb-6 opacity-90">Secure, nationwide, and legally recognized. Connect with a licensed notary right from your device.</p>
+        <div class="flex gap-4">
+          <a href="#form" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-slate-100">Start Notarization</a>
+          <a href="#pricing" class="border border-white/50 px-6 py-3 rounded-lg font-semibold hover:bg-white/10">View Pricing</a>
+        </div>
+        <div class="mt-6 flex gap-4 text-sm opacity-80">
+          <span>✔ Licensed Notaries</span>
+          <span>✔ Secure & Encrypted</span>
+          <span>✔ Valid Nationwide</span>
+        </div>
       </div>
-    </div>
-    <div class="fade-up delay-150">
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Notary illustration" class="w-full max-w-sm mx-auto">
+      <div class="fade-up delay-150">
+        <img src="https://cdn-icons-png.flaticon.com/512/2972/2972128.png" alt="Notary illustration" class="w-full max-w-md mx-auto">
+      </div>
     </div>
   </section>
 
-  <!-- STEPS -->
-  <section id="how" class="bg-slate-50 py-16">
+  <!-- HOW IT WORKS -->
+  <section id="how" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-bold mb-10">How It Works</h2>
+      <h2 class="text-3xl font-bold mb-12">3 Easy Steps</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 bg-white shadow rounded fade-up">
-          <div class="text-blue-600 text-4xl mb-4">1</div>
-          <h3 class="font-semibold mb-2">Upload Documents</h3>
-          <p class="text-sm text-slate-600">Securely upload your file(s) from your computer or phone.</p>
+        <div class="p-6 shadow-lg rounded-xl fade-up">
+          <div class="text-blue-600 text-5xl mb-4">📄</div>
+          <h3 class="font-semibold text-lg mb-2">Upload Your Docs</h3>
+          <p class="text-slate-600 text-sm">Securely upload your files in seconds.</p>
         </div>
-        <div class="p-6 bg-white shadow rounded fade-up delay-150">
-          <div class="text-blue-600 text-4xl mb-4">2</div>
-          <h3 class="font-semibold mb-2">Verify Identity</h3>
-          <p class="text-sm text-slate-600">Confirm your ID quickly through our secure system.</p>
+        <div class="p-6 shadow-lg rounded-xl fade-up delay-150">
+          <div class="text-blue-600 text-5xl mb-4">🪪</div>
+          <h3 class="font-semibold text-lg mb-2">Verify Your ID</h3>
+          <p class="text-slate-600 text-sm">Quick, secure identity verification.</p>
         </div>
-        <div class="p-6 bg-white shadow rounded fade-up delay-300">
-          <div class="text-blue-600 text-4xl mb-4">3</div>
-          <h3 class="font-semibold mb-2">Meet Your Notary</h3>
-          <p class="text-sm text-slate-600">Connect live with a licensed notary — anytime, anywhere.</p>
+        <div class="p-6 shadow-lg rounded-xl fade-up delay-300">
+          <div class="text-blue-600 text-5xl mb-4">💻</div>
+          <h3 class="font-semibold text-lg mb-2">Meet With Notary</h3>
+          <p class="text-slate-600 text-sm">Live video session with a licensed notary.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- PRICING -->
-  <section id="pricing" class="py-16">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-bold mb-6">Simple, Transparent Pricing</h2>
-      <div class="bg-white shadow rounded-lg p-8 max-w-md mx-auto fade-up">
-        <p class="text-lg mb-2">Base price: <span class="font-semibold">$39</span></p>
-        <p class="text-sm text-slate-600 mb-4">Includes 1 document + 1 signer. Just +$5 for each additional signer or document.</p>
-        <div id="priceBox" class="text-3xl font-bold mb-4">$39</div>
-        <p class="text-sm text-slate-500">Calculated automatically when you upload and select signers.</p>
+  <section id="pricing" class="py-20 bg-slate-50">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-6">Affordable, Transparent Pricing</h2>
+      <p class="text-slate-600 mb-10">No hidden fees. Just pay for what you need.</p>
+      <div class="bg-white shadow-xl rounded-2xl p-10 max-w-md mx-auto fade-up">
+        <p class="text-lg mb-2">Base Price</p>
+        <div class="text-5xl font-bold text-blue-600 mb-4">$39</div>
+        <p class="text-sm text-slate-600 mb-6">Includes 1 document & 1 signer. Add more as needed for just <strong>+ $5 each</strong>.</p>
+        <div class="flex flex-col gap-4 items-start text-left">
+          <label class="font-medium">Number of Documents</label>
+          <input type="range" min="1" max="5" value="1" id="docRange" class="w-full">
+          <span id="docCount">1 document</span>
+          <label class="font-medium mt-4">Number of Signers</label>
+          <input type="range" min="1" max="5" value="1" id="signerRange" class="w-full">
+          <span id="signerCount">1 signer</span>
+        </div>
+        <div class="mt-6 text-xl font-bold">Total: <span id="calcPrice">$39</span></div>
       </div>
     </div>
   </section>
 
   <!-- FORM -->
-  <section id="form" class="bg-slate-50 py-16">
-    <div class="max-w-2xl mx-auto px-6 bg-white shadow rounded-lg p-8 fade-up">
-      <h2 class="text-xl font-bold mb-4">Start Your Notarization</h2>
-      <form id="notaryForm" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium">Your Name</label>
-          <input type="text" name="name" required class="w-full border rounded px-3 py-2">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Email</label>
-          <input type="email" name="email" required class="w-full border rounded px-3 py-2">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Upload Document(s)</label>
-          <input type="file" id="docs" name="docs" multiple required class="w-full">
-        </div>
-        <div>
-          <label class="block text-sm font-medium">Number of Signers</label>
-          <input type="number" name="signers" id="signers" value="1" min="1" class="w-20 border rounded px-3 py-2">
-        </div>
-        <div class="bg-slate-50 border rounded p-3">
-          <p class="font-medium">Total: <span id="price">$39</span></p>
-        </div>
-        <div id="paypal-button-container"></div>
+  <section id="form" class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6 bg-slate-50 shadow-xl rounded-2xl p-10 fade-up">
+      <h2 class="text-2xl font-bold mb-6">Start Your Notarization</h2>
+      <form id="notaryForm" class="space-y-6">
+        <input type="text" name="name" placeholder="Full Name" required class="w-full border rounded-lg px-4 py-3">
+        <input type="email" name="email" placeholder="Email Address" required class="w-full border rounded-lg px-4 py-3">
+        <input type="file" id="docs" name="docs" multiple required class="w-full">
+        <div id="paypal-button-container" class="mt-6"></div>
       </form>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-16">
+  <section id="faq" class="py-20 bg-slate-50">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+      <h2 class="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
       <div class="space-y-4">
-        <details class="bg-white border rounded p-4">
-          <summary class="font-medium cursor-pointer">Is online notarization legal?</summary>
-          <p class="mt-2 text-sm text-slate-600">Yes. Online notarization is legally recognized in all 50 states under federal law.</p>
+        <details class="bg-white p-6 rounded-lg shadow">
+          <summary class="font-semibold">Is online notarization legal?</summary>
+          <p class="mt-2 text-slate-600">Yes, it’s valid in all 50 states under federal law.</p>
         </details>
-        <details class="bg-white border rounded p-4">
-          <summary class="font-medium cursor-pointer">What do I need?</summary>
-          <p class="mt-2 text-sm text-slate-600">You need a valid government-issued ID, internet connection, and your document.</p>
+        <details class="bg-white p-6 rounded-lg shadow">
+          <summary class="font-semibold">What do I need?</summary>
+          <p class="mt-2 text-slate-600">A valid ID, your document, and internet connection.</p>
         </details>
-        <details class="bg-white border rounded p-4">
-          <summary class="font-medium cursor-pointer">How fast is the process?</summary>
-          <p class="mt-2 text-sm text-slate-600">Most notarizations take less than 15 minutes from start to finish.</p>
+        <details class="bg-white p-6 rounded-lg shadow">
+          <summary class="font-semibold">How long does it take?</summary>
+          <p class="mt-2 text-slate-600">Most notarizations are completed in under 15 minutes.</p>
         </details>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-slate-900 text-slate-300 py-6 mt-12">
+  <footer class="bg-slate-900 text-slate-300 py-8">
     <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
       <p>&copy; <span id="year"></span> Direct Notary LLC. All rights reserved.</p>
       <div class="flex gap-6 text-sm mt-4 md:mt-0">
         <a href="#" class="hover:text-white">Privacy Policy</a>
-        <a href="#" class="hover:text-white">Terms of Service</a>
+        <a href="#" class="hover:text-white">Terms</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const basePrice = 39, extra = 5;
-    const priceEl = document.getElementById('price');
-    const docs = document.getElementById('docs');
-    const signers = document.getElementById('signers');
-    function calcPrice(){
-      let count = docs.files.length || 1;
-      let signerCount = parseInt(signers.value) || 1;
-      let total = basePrice + extra * ((count-1)+(signerCount-1));
-      priceEl.textContent = `$${total}`;
-      document.getElementById('priceBox').textContent = `$${total}`;
+    const basePrice=39, extra=5;
+    const docRange=document.getElementById("docRange"), signerRange=document.getElementById("signerRange");
+    const docCount=document.getElementById("docCount"), signerCount=document.getElementById("signerCount");
+    const calcPrice=document.getElementById("calcPrice"), priceEl=document.getElementById("calcPrice");
+    function updatePrice(){
+      let docs=+docRange.value, signers=+signerRange.value;
+      docCount.textContent=`${docs} document${docs>1?'s':''}`;
+      signerCount.textContent=`${signers} signer${signers>1?'s':''}`;
+      let total=basePrice+extra*((docs-1)+(signers-1));
+      calcPrice.textContent=`$${total}`;
       return total;
     }
-    docs.addEventListener('change', calcPrice);
-    signers.addEventListener('input', calcPrice);
+    docRange.addEventListener("input",updatePrice);
+    signerRange.addEventListener("input",updatePrice);
+    updatePrice();
 
     paypal.Buttons({
-      createOrder: (data, actions) => {
-        return actions.order.create({ purchase_units: [{ amount: { value: calcPrice().toString() } }] });
-      },
-      onApprove: (data, actions) => {
-        return actions.order.capture().then(details => {
-          alert('Payment completed by ' + details.payer.name.given_name);
-          const fd = new FormData(document.getElementById('notaryForm'));
-          fd.append('orderID', data.orderID);
-          fetch('/api/initiate', { method:'POST', body: fd });
-        });
-      }
-    }).render('#paypal-button-container');
+      createOrder:(data,actions)=>actions.order.create({purchase_units:[{amount:{value:updatePrice().toString()}}]}),
+      onApprove:(data,actions)=>actions.order.capture().then(details=>{
+        alert("Payment completed by "+details.payer.name.given_name);
+        const fd=new FormData(document.getElementById("notaryForm"));
+        fd.append("orderID",data.orderID);
+        fetch("/api/initiate",{method:"POST",body:fd});
+      })
+    }).render("#paypal-button-container");
 
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("year").textContent=new Date().getFullYear();
 
-    // Scroll animation
-    const obs = new IntersectionObserver((entries)=> {
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
-    },{threshold:0.2});
-    document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+    // animations
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show");})},{threshold:.2});
+    document.querySelectorAll(".fade-up").forEach(el=>obs.observe(el));
   </script>
 </body>
 </html>
