@@ -1,708 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DirectNotary - Online Notary for All 50 States | $25</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        .compliance-banner {
-            background: #fef3c7;
-            padding: 8px;
-            text-align: center;
-            font-size: 14px;
-            border-bottom: 2px solid #fbbf24;
-        }
-
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .logo span:first-child {
-            color: #3b82f6;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #4b5563;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            color: #3b82f6;
-        }
-
-        /* Button Styles */
-        .btn {
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            font-size: 16px;
-        }
-
-        .btn-primary {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #2563eb;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59,130,246,0.3);
-        }
-
-        .btn-success {
-            background: #10b981;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(16,185,129,0.3);
-        }
-
-        .btn-danger {
-            background: #ef4444;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #dc2626;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(239,68,68,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #3b82f6;
-            color: #3b82f6;
-        }
-
-        .btn-outline:hover {
-            background: #3b82f6;
-            color: white;
-        }
-
-        .btn-secondary {
-            background: #f3f4f6;
-            color: #374151;
-        }
-
-        .btn-secondary:hover {
-            background: #e5e7eb;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #10b981;
-            padding: 8px 20px;
-            border-radius: 50px;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .price-card {
-            text-align: center;
-            position: relative;
-            border: 2px solid #e5e7eb;
-        }
-
-        .price-card.featured {
-            border-color: #3b82f6;
-        }
-
-        .price-card .price {
-            font-size: 48px;
-            font-weight: bold;
-            color: #3b82f6;
-            margin: 20px 0;
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #3b82f6;
-            color: white;
-            padding: 5px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        /* Sections */
-        .section {
-            padding: 80px 20px;
-        }
-
-        .section-gray {
-            background: #f9fafb;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        .grid {
-            display: grid;
-            gap: 30px;
-        }
-
-        .grid-3 {
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .grid-2 {
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        }
-
-        .grid-4 {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        }
-
-        /* Page Management */
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        /* Booking Flow Specific Styles */
-        .progress-container {
-            background: white;
-            padding: 30px 0;
-            border-bottom: 1px solid #e5e7eb;
-            position: sticky;
-            top: 60px;
-            z-index: 100;
-        }
-
-        .progress-bar {
-            display: flex;
-            justify-content: space-between;
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .progress-bar::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: #e5e7eb;
-            z-index: -1;
-        }
-
-        .progress-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            background: white;
-            padding: 0 10px;
-        }
-
-        .progress-step-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #e5e7eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 8px;
-        }
-
-        .progress-step.active .progress-step-circle {
-            background: #3b82f6;
-        }
-
-        .progress-step.completed .progress-step-circle {
-            background: #10b981;
-        }
-
-        .booking-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 40px;
-        }
-
-        .form-section {
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #374151;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 16px;
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: start;
-            gap: 10px;
-            margin-bottom: 15px;
-            padding: 15px;
-            background: #f9fafb;
-            border-radius: 8px;
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin-top: 2px;
-        }
-
-        .radio-option {
-            display: flex;
-            align-items: start;
-            padding: 20px;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 15px;
-        }
-
-        .radio-option:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-        }
-
-        .radio-option input[type="radio"] {
-            width: auto;
-            margin-right: 15px;
-            margin-top: 2px;
-        }
-
-        /* Footer */
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 50px 20px 30px;
-            text-align: center;
-        }
-
-        footer a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .section {
-                padding: 40px 20px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DirectNotaryAZ - Online Notary Service</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <!-- Main Website -->
-    <div id="mainSite" class="page active">
-        <!-- Compliance Banner -->
-        <div class="compliance-banner">
-            ⚖️ All sessions recorded per Arizona law | Valid in all 50 states | Must be 18+ with government ID
-        </div>
+<body class="bg-gray-50 font-sans text-gray-800">
 
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <nav>
-                    <div class="logo" onclick="showPage('home')">
-                        <span>Direct</span><span>Notary</span>
-                    </div>
-                    <div class="nav-links">
-                        <a onclick="showPage('home')">Home</a>
-                        <a onclick="showPage('how')">How It Works</a>
-                        <a onclick="showPage('pricing')">Pricing</a>
-                        <a onclick="showPage('states')">All States</a>
-                        <button class="btn btn-primary" onclick="showPage('booking')">Book Now - $25</button>
-                        <button class="btn btn-outline" onclick="showPage('notary-login')">Notary Login</button>
-                    </div>
-                </nav>
-            </div>
-        </header>
-
-        <!-- Dynamic Content Container -->
-        <div id="contentArea">
-            <!-- Home Page Content (Default) -->
-            <div id="homePage" class="page-content active">
-                <!-- Hero Section -->
-                <section class="hero">
-                    <div class="container">
-                        <div class="badge">SERVING ALL 50 STATES + DC</div>
-                        <h1>Online Notary Service for Every State in America</h1>
-                        <p>Get any document notarized online in minutes. Our licensed Arizona notaries provide legally valid notarizations for customers nationwide, 24/7.</p>
-                        
-                        <div class="buttons">
-                            <button class="btn btn-success" onclick="showPage('booking')">Book Standard - $25</button>
-                            <button class="btn btn-danger" onclick="showPage('booking')">Emergency 24/7 - $75</button>
-                        </div>
-
-                        <p style="margin-top: 30px; font-size: 16px;">🎉 First-Time Special: FREE first notarization (pay only if satisfied)</p>
-                    </div>
-                </section>
-
-                <!-- Features Section -->
-                <section class="section">
-                    <div class="container">
-                        <h2 class="section-title">Why It's Legal in All 50 States</h2>
-                        <div class="grid grid-3">
-                            <div class="card">
-                                <h3 style="color: #3b82f6; margin-bottom: 15px;">🏛️ Federal Law Protection</h3>
-                                <p>The Full Faith and Credit Clause of the U.S. Constitution requires all states to recognize notarizations performed in other states.</p>
-                            </div>
-                            <div class="card">
-                                <h3 style="color: #3b82f6; margin-bottom: 15px;">⚖️ Interstate Recognition</h3>
-                                <p>Your bank, court, or agency in any state must legally accept our Arizona notarization. It's federal law.</p>
-                            </div>
-                            <div class="card">
-                                <h3 style="color: #3b82f6; margin-bottom: 15px;">✅ Fully Compliant</h3>
-                                <p>Arizona RON laws meet or exceed federal standards for identity verification and document security.</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- How It Works Preview -->
-                <section class="section section-gray">
-                    <div class="container">
-                        <h2 class="section-title">How It Works</h2>
-                        <div class="grid grid-4">
-                            <div class="card" style="text-align: center;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">📝</div>
-                                <h3>1. Book Service</h3>
-                                <p>Choose your service level and provide information</p>
-                            </div>
-                            <div class="card" style="text-align: center;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">📤</div>
-                                <h3>2. Upload Document</h3>
-                                <p>Send us your document securely</p>
-                            </div>
-                            <div class="card" style="text-align: center;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">🎥</div>
-                                <h3>3. Video Session</h3>
-                                <p>Connect with notary via secure video</p>
-                            </div>
-                            <div class="card" style="text-align: center;">
-                                <div style="font-size: 48px; margin-bottom: 15px;">✅</div>
-                                <h3>4. Receive PDF</h3>
-                                <p>Get your notarized document instantly</p>
-                            </div>
-                        </div>
-                        <div style="text-align: center; margin-top: 40px;">
-                            <button class="btn btn-primary" onclick="showPage('booking')">Start Your Notarization</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Pricing Preview -->
-                <section class="section">
-                    <div class="container">
-                        <h2 class="section-title">Simple, Transparent Pricing</h2>
-                        <div class="grid grid-3">
-                            <div class="card price-card">
-                                <h3>Standard</h3>
-                                <div class="price">$25</div>
-                                <p style="margin-bottom: 20px;">Perfect for planned notarizations</p>
-                                <ul style="list-style: none; padding: 0; text-align: left;">
-                                    <li>✓ Single document</li>
-                                    <li>✓ Within 4 hours</li>
-                                    <li>✓ Business hours</li>
-                                    <li>✓ Email delivery</li>
-                                </ul>
-                                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="showPage('booking')">Choose Standard</button>
-                            </div>
-                            
-                            <div class="card price-card featured">
-                                <span class="popular-badge">MOST POPULAR</span>
-                                <h3>Priority</h3>
-                                <div class="price">$45</div>
-                                <p style="margin-bottom: 20px;">Faster service when you need it</p>
-                                <ul style="list-style: none; padding: 0; text-align: left;">
-                                    <li>✓ Within 1 hour</li>
-                                    <li>✓ Extended hours</li>
-                                    <li>✓ Text updates</li>
-                                    <li>✓ Priority support</li>
-                                </ul>
-                                <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="showPage('booking')">Choose Priority</button>
-                            </div>
-                            
-                            <div class="card price-card">
-                                <h3>Emergency</h3>
-                                <div class="price" style="color: #ef4444;">$75</div>
-                                <p style="margin-bottom: 20px;">Urgent situations, available 24/7</p>
-                                <ul style="list-style: none; padding: 0; text-align: left;">
-                                    <li>✓ 30 minutes or less</li>
-                                    <li>✓ Available 24/7/365</li>
-                                    <li>✓ Hospital/urgent</li>
-                                    <li>✓ Phone support</li>
-                                </ul>
-                                <button class="btn btn-danger" style="width: 100%; margin-top: 20px;" onclick="showPage('booking')">Emergency Service</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Other Pages Content -->
-            <div id="howPage" class="page-content" style="display: none;">
-                <section class="section">
-                    <div class="container">
-                        <h1 class="section-title">How Online Notarization Works</h1>
-                        
-                        <div style="max-width: 800px; margin: 0 auto;">
-                            <div class="card" style="margin-bottom: 30px;">
-                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 1: Book Your Service</h2>
-                                <p>Choose your service level (Standard $25, Priority $45, or Emergency $75) and provide your information. Payment is processed securely through our platform.</p>
-                            </div>
-                            
-                            <div class="card" style="margin-bottom: 30px;">
-                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 2: Upload Your Document</h2>
-                                <p>Upload your document in PDF, JPG, or PNG format. You can also take a photo with your phone. Make sure all fields are filled out before the notarization.</p>
-                            </div>
-                            
-                            <div class="card" style="margin-bottom: 30px;">
-                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 3: Verify Your Identity</h2>
-                                <p>Show your government-issued photo ID to the notary. You'll answer a few security questions to verify your identity (knowledge-based authentication).</p>
-                            </div>
-                            
-                            <div class="card" style="margin-bottom: 30px;">
-                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 4: Connect with Notary</h2>
-                                <p>Join a secure video call with your assigned Arizona notary. The session is recorded for legal compliance. The notary will guide you through the signing process.</p>
-                            </div>
-                            
-                            <div class="card">
-                                <h2 style="color: #3b82f6; margin-bottom: 20px;">Step 5: Receive Your Document</h2>
-                                <p>After notarization, you'll immediately receive your notarized document as a PDF with the notary's digital seal and certificate. This is legally valid in all 50 states.</p>
-                            </div>
-                        </div>
-
-                        <div style="text-align: center; margin-top: 50px;">
-                            <button class="btn btn-primary" onclick="showPage('booking')">Start Your Notarization</button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <div id="pricingPage" class="page-content" style="display: none;">
-                <!-- Pricing page content here -->
-            </div>
-
-            <div id="statesPage" class="page-content" style="display: none;">
-                <!-- States page content here -->
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <h3 style="font-size: 24px; margin-bottom: 10px;">DirectNotary</h3>
-                <p style="margin-bottom: 20px;">Licensed Arizona Notaries Serving All 50 States</p>
-                
-                <p style="font-size: 14px; margin-bottom: 10px;">DirectNotary LLC | Arizona Entity #23888463</p>
-                <p style="font-size: 14px; margin-bottom: 20px;">Platform connecting customers with licensed RON notaries</p>
-                
-                <div style="margin: 20px 0;">
-                    <a href="#">Terms</a> | 
-                    <a href="#">Privacy</a> | 
-                    <a href="#" onclick="showPage('states')">All States</a>
-                </div>
-                
-                <p style="font-size: 12px; color: #9ca3af; margin-top: 30px;">
-                    Not a law firm. Cannot provide legal advice. Notarizations performed under Arizona law.
-                </p>
-            </div>
-        </footer>
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-6 shadow">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-3xl font-bold">DirectNotaryAZ</h1>
+      <p class="text-lg">Fast, secure, and legal online notarization — available in all 50 states.</p>
     </div>
+  </header>
 
-    <!-- Booking Flow (Hidden by default) -->
-    <div id="bookingFlow" class="page" style="display: none;">
-        <!-- Your complete booking flow HTML here -->
-        <!-- This would include all the progress bars and forms from the previous code -->
-    </div>
+  <!-- Main Form -->
+  <main class="max-w-3xl mx-auto mt-10 bg-white shadow rounded p-8">
+    <h2 class="text-2xl font-bold mb-6 text-center">Start Your Online Notarization</h2>
 
-    <!-- Notary Login (Hidden by default) -->
-    <div id="notaryLogin" class="page" style="display: none;">
-        <!-- Notary login form here -->
-    </div>
+    <form id="notaryForm" class="space-y-5">
 
-    <script>
-        // Page navigation
-        function showPage(pageName) {
-            // Hide all pages first
-            document.querySelectorAll('.page').forEach(page => {
-                page.style.display = 'none';
+      <!-- Full Name -->
+      <div>
+        <label class="block font-semibold mb-1">Full Name</label>
+        <input type="text" name="fullName" required class="w-full border rounded px-3 py-2"/>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block font-semibold mb-1">Email</label>
+        <input type="email" name="email" required class="w-full border rounded px-3 py-2"/>
+      </div>
+
+      <!-- Phone -->
+      <div>
+        <label class="block font-semibold mb-1">Phone</label>
+        <input type="tel" name="phone" required class="w-full border rounded px-3 py-2"/>
+      </div>
+
+      <!-- Document Upload -->
+      <div>
+        <label class="block font-semibold mb-1">Upload Document(s)</label>
+        <input type="file" id="documents" name="documents" multiple required class="w-full"/>
+        <p class="text-sm text-gray-500">Accepted: PDF, DOCX. Max 10MB each.</p>
+      </div>
+
+      <!-- Number of Signers -->
+      <div>
+        <label class="block font-semibold mb-1">Number of Signers</label>
+        <input type="number" id="numSigners" name="numSigners" value="1" min="1" required class="w-full border rounded px-3 py-2"/>
+      </div>
+
+      <!-- ID Upload -->
+      <div>
+        <label class="block font-semibold mb-1">Upload Government ID</label>
+        <input type="file" name="idVerification" required class="w-full"/>
+        <p class="text-sm text-gray-500">Driver’s license, Passport, or State ID.</p>
+      </div>
+
+      <!-- Session Time -->
+      <div>
+        <label class="block font-semibold mb-1">Preferred Session Time</label>
+        <input type="datetime-local" name="sessionTime" class="w-full border rounded px-3 py-2"/>
+        <p class="text-sm text-gray-500">Leave blank for next available notary.</p>
+      </div>
+
+      <!-- Price Display -->
+      <div class="text-center text-xl font-bold bg-gray-100 py-4 rounded">
+        Total Price: $<span id="totalPrice">39</span>
+      </div>
+
+      <!-- PayPal -->
+      <div id="paypal-button-container" class="mt-6"></div>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-12 py-6 text-center text-gray-600 text-sm">
+    <p>© 2025 DirectNotaryAZ. All Rights Reserved.</p>
+    <p><a href="#" class="underline">Terms of Service</a> | <a href="#" class="underline">Privacy Policy</a></p>
+  </footer>
+
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_SANDBOX_CLIENT_ID&currency=USD"></script>
+
+  <script>
+    const basePrice = 39;
+    const extraPrice = 5;
+
+    const documentsInput = document.getElementById('documents');
+    const numSignersInput = document.getElementById('numSigners');
+    const totalPriceSpan = document.getElementById('totalPrice');
+
+    function calculatePrice() {
+      const numDocuments = documentsInput.files.length || 1;
+      const numSigners = parseInt(numSignersInput.value) || 1;
+      const extras = (numDocuments - 1) + (numSigners - 1);
+      const total = basePrice + extras * extraPrice;
+      totalPriceSpan.textContent = total;
+      return total;
+    }
+
+    documentsInput.addEventListener('change', calculatePrice);
+    numSignersInput.addEventListener('input', calculatePrice);
+
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        const totalAmount = calculatePrice();
+        return actions.order.create({
+          purchase_units: [{ amount: { value: totalAmount.toString() } }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Payment completed by ' + details.payer.name.given_name);
+
+          // Collect form data
+          const form = document.getElementById('notaryForm');
+          const formData = new FormData(form);
+          formData.append('paypalOrderId', data.orderID);
+
+          // Send to backend API
+          fetch('/api/initiate', {
+            method: 'POST',
+            body: formData
+          }).then(res => res.json())
+            .then(res => {
+              if (res.success) {
+                alert('Notarization session initiated successfully!');
+              } else {
+                alert('There was an issue initiating your notarization.');
+              }
             });
-            
-            // Hide all content within main site
-            document.querySelectorAll('.page-content').forEach(content => {
-                content.style.display = 'none';
-            });
+        });
+      }
+    }).render('#paypal-button-container');
 
-            // Show the requested page
-            if (pageName === 'booking') {
-                document.getElementById('mainSite').style.display = 'none';
-                document.getElementById('bookingFlow').style.display = 'block';
-                // Initialize booking flow here
-            } else if (pageName === 'notary-login') {
-                document.getElementById('mainSite').style.display = 'none';
-                document.getElementById('notaryLogin').style.display = 'block';
-            } else {
-                // Show main site
-                document.getElementById('mainSite').style.display = 'block';
-                
-                // Show specific content page
-                if (pageName === 'home') {
-                    document.getElementById('homePage').style.display = 'block';
-                } else if (pageName === 'how') {
-                    document.getElementById('howPage').style.display = 'block';
-                } else if (pageName === 'pricing') {
-                    document.getElementById('pricingPage').style.display = 'block';
-                } else if (pageName === 'states') {
-                    document.getElementById('statesPage').style.display = 'block';
-                }
-            }
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
-
-        // Initialize - make sure homepage shows first
-        window.onload = function() {
-            showPage('home');
-        }
-    </script>
+    calculatePrice(); // Initial
+  </script>
 </body>
 </html>
