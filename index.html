@@ -1,430 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Direct Notary LLC — Secure Online Notarization</title>
-  <meta name="description" content="Direct Notary LLC - Fast, secure online notarization across all 50 states.">
-  <!-- Inter font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <!-- PayPal SDK (replace client id) -->
-  <script src="https://www.paypal.com/sdk/js?client-id=REPLACE_WITH_PAYPAL_CLIENT_ID&currency=USD" defer></script>
-
-  <style>
-    :root{
-      --bg:#f7fafc; --card:#ffffff; --muted:#64748b; --accent:#125bff; --accent-2:#06b6d4;
-      --radius:14px; --shadow: 0 8px 30px rgba(17,24,39,0.06);
-      --max:1100px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      margin:0; background:linear-gradient(180deg,#f8fafc, #ffffff); color:#0f172a;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-    }
-    .container{max-width:var(--max); margin:0 auto; padding:24px;}
-    header.nav{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 0;}
-    .brand{display:flex; align-items:center; gap:12px;}
-    .logo{
-      width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2)); color:white; font-weight:700; font-size:18px;
-      box-shadow: 0 6px 18px rgba(12,35,120,0.12);
-    }
-    nav a.cta{background:var(--accent); color:white; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:600}
-    /* HERO */
-    .hero{display:grid; grid-template-columns: 1fr; gap:28px; align-items:center; padding:28px 0;}
-    @media(min-width:980px){ .hero{grid-template-columns: 1fr 420px; gap:48px;} }
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.85),var(--card)); border-radius:16px; padding:28px; box-shadow:var(--shadow);}
-    .eyebrow{display:inline-block; background:#ecfeff; color: #075985; padding:6px 10px; border-radius:999px; font-weight:600; font-size:13px;}
-    .h1{font-size:28px; line-height:1.05; font-weight:800; margin:12px 0 8px;}
-    @media(min-width:980px){ .h1{font-size:36px;} }
-    .subtitle{color:var(--muted); margin-bottom:18px;}
-    .hero-cta{display:flex; gap:12px; align-items:center;}
-    .btn{background:var(--accent); color:white; padding:12px 16px; border-radius:12px; font-weight:700; text-decoration:none; display:inline-block}
-    .btn.secondary{background:transparent; border:1px solid rgba(15,23,42,0.06); color:var(--muted); font-weight:600}
-    /* trust row */
-    .trust-row{display:flex; gap:12px; margin-top:14px; flex-wrap:wrap;}
-    .badge{background:#fff; padding:8px 12px; border-radius:999px; font-weight:600; font-size:13px; color:var(--muted); box-shadow:0 4px 14px rgba(2,6,23,.04)}
-    /* Main area: form + pricing summary */
-    .main-grid{display:grid; grid-template-columns: 1fr; gap:20px; margin-top:20px;}
-    @media(min-width:980px){ .main-grid{grid-template-columns: 1fr 360px; align-items:start;} }
-    /* form */
-    form.card{background:var(--card); border-radius:12px; padding:18px; box-shadow:var(--shadow);}
-    label.field{display:block; margin-bottom:12px; font-size:14px;}
-    input[type="text"], input[type="email"], input[type="tel"], input[type="datetime-local"], input[type="number"], textarea {
-      width:100%; padding:12px 12px; border-radius:10px; border:1px solid #e6eef6; background:#fbfdff; font-size:14px;
-    }
-    input[type="file"]{font-size:13px}
-    .small{font-size:13px; color:var(--muted); margin-top:6px;}
-    /* steppers */
-    .stepper{display:flex; gap:8px; align-items:center;}
-    .stepper button{width:34px;height:34px;border-radius:8px;border:1px solid #e6eef6;background:white; font-weight:700}
-    /* price card */
-    .price-card{background:linear-gradient(180deg,#fff,#fbfdff); border-radius:12px; padding:18px; box-shadow:var(--shadow); position:relative;}
-    .price-val{font-size:28px; font-weight:800; color:var(--accent);}
-    .price-note{font-size:13px;color:var(--muted); margin-top:8px;}
-    /* paypal container spacing */
-    #paypal-button-container{margin-top:10px}
-    /* testimonials */
-    .test-grid{display:grid; gap:14px;}
-    @media(min-width:980px){ .test-grid{grid-template-columns:repeat(3,1fr)} }
-    .testimonial{background:var(--card); padding:16px; border-radius:12px; box-shadow: 0 6px 20px rgba(17,24,39,0.04); color: #0f172a}
-    .avatar{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#ff7aa2,#ffb86b);display:inline-flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    /* footer */
-    footer{margin-top:36px; padding:28px 0; color:var(--muted); font-size:13px}
-    /* sticky mobile CTA */
-    .mobile-cta{display:none}
-    @media(max-width:640px){
-      .mobile-cta{display:flex; position:fixed; left:16px; right:16px; bottom:18px; z-index:60; justify-content:center}
-    }
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .center{display:flex; align-items:center; justify-content:center}
-    .hidden{display:none}
-    /* subtle animations */
-    .reveal{opacity:0; transform:translateY(10px); transition:all .55s cubic-bezier(.2,.9,.2,1);}
-    .reveal.show{opacity:1; transform:none;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direct Notary LLC - Online Notary</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=REPLACE_WITH_PAYPAL_CLIENT_ID&currency=USD" defer></script>
 </head>
-<body>
-  <div class="container">
-    <!-- NAV -->
-    <header class="nav" role="banner">
-      <div class="brand">
-        <div class="logo">DN</div>
-        <div>
-          <div style="font-weight:800">Direct Notary LLC</div>
-          <div style="font-size:13px;color:var(--muted)">Online Notary — Nationwide</div>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold text-blue-700">Direct Notary LLC</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#how" class="hover:text-blue-600">How It Works</a>
+        <a href="#pricing" class="hover:text-blue-600">Pricing</a>
+        <a href="#faq" class="hover:text-blue-600">FAQ</a>
+        <a href="#contact" class="hover:text-blue-600">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-20">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-4xl md:text-5xl font-bold mb-6">Online Notary, Anytime. Anywhere.</h2>
+      <p class="text-lg mb-8">Legally notarize your documents online in minutes. Available 24/7 in all 50 states.</p>
+      <a href="#form" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Get Started</a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how" class="py-16 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-12">How It Works</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="text-blue-600 text-4xl mb-4">1</div>
+          <h4 class="font-bold mb-2">Upload Your Document</h4>
+          <p>Securely upload the document you need notarized.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="text-blue-600 text-4xl mb-4">2</div>
+          <h4 class="font-bold mb-2">Verify Identity</h4>
+          <p>Quick ID verification ensures compliance with state law.</p>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow">
+          <div class="text-blue-600 text-4xl mb-4">3</div>
+          <h4 class="font-bold mb-2">Meet Online with a Notary</h4>
+          <p>Connect via secure video chat, sign, and download instantly.</p>
         </div>
       </div>
-      <div style="display:flex; gap:12px; align-items:center;">
-        <div class="muted" style="font-size:13px">Need help? <a href="mailto:info@directnotaryaz.com">info@directnotaryaz.com</a></div>
-        <a class="cta" href="#form">Start Notarization</a>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h3 class="text-3xl font-bold mb-8">Affordable Pricing</h3>
+      <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <p class="text-lg mb-4">Flat rate, no hidden fees.</p>
+        <p class="text-5xl font-bold text-blue-600 mb-4">$39</p>
+        <p class="mb-6">Includes first document and signer.<br>+ $5 for each additional signer or document.</p>
+        <a href="#form" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700">Start Now</a>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-card reveal" id="heroLeft">
-        <div class="eyebrow">Online Notary — All 50 States</div>
-        <h1 class="h1">Notarize documents securely from anywhere</h1>
-        <p class="subtitle">Fast live video notarizations with licensed notaries. Upload your document, verify identity, pay — then meet the notary. Legal and compliant across the U.S.</p>
-
-        <div class="hero-cta">
-          <a class="btn" href="#form">Get Notarized — $39</a>
-          <a class="btn secondary" href="#how">How it works</a>
+  <!-- Notary Form -->
+  <section id="form" class="py-16 bg-gray-100">
+    <div class="max-w-3xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-8 text-center">Start Your Notarization</h3>
+      <form id="notaryForm" class="bg-white p-6 rounded-lg shadow space-y-4" enctype="multipart/form-data">
+        <input type="text" name="fullName" placeholder="Full Name" class="w-full border p-3 rounded" required>
+        <input type="email" name="email" placeholder="Email" class="w-full border p-3 rounded" required>
+        <input type="tel" name="phone" placeholder="Phone" class="w-full border p-3 rounded">
+        <label class="block font-semibold">Upload Document(s):</label>
+        <input type="file" id="docs" name="documents" multiple class="w-full border p-3 rounded" required>
+        <label class="block font-semibold">Number of Signers:</label>
+        <input type="number" id="signers" name="signers" value="1" min="1" class="w-full border p-3 rounded">
+        <div class="bg-blue-50 border rounded p-4">
+          <p class="font-semibold">Price: <span id="price">$39</span></p>
         </div>
-
-        <div class="trust-row" style="margin-top:18px">
-          <div class="badge">🔒 Encrypted Uploads</div>
-          <div class="badge">🕒 24/7 Notaries</div>
-          <div class="badge">💳 PayPal & Card</div>
-        </div>
-      </div>
-
-      <!-- right column: quick pricing & trust -->
-      <aside class="reveal center" id="heroRight">
-        <div style="width:100%; max-width:420px;">
-          <div class="price-card">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <div>
-                <div style="font-size:13px; color:var(--muted)">Starting at</div>
-                <div class="price-val" id="headerPrice">$39</div>
-              </div>
-              <div style="text-align:right;">
-                <div style="font-weight:700">Direct Notary LLC</div>
-                <div class="muted" style="font-size:13px">Secure • Fast • Nationwide</div>
-              </div>
-            </div>
-
-            <div class="price-note">Base price includes 1 document & 1 signer. Add an extra signer or document for <strong>$5</strong> each.</div>
-
-            <div style="margin-top:14px; border-top:1px dashed #eef2f7; padding-top:12px;">
-              <div style="display:flex; gap:10px; align-items:center;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="#06b6d4" stroke-width="1.6" stroke-linecap="round"/></svg>
-                <div style="font-size:13px; color:var(--muted)">We handle the licensed notary — you don't need to provide one.</div>
-              </div>
-            </div>
-
-            <div style="margin-top:14px; display:flex; gap:8px; align-items:center;">
-              <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" style="height:32px">
-              <div class="muted" style="font-size:13px">Pay securely with PayPal or card</div>
-            </div>
-          </div>
-
-          <div style="margin-top:12px; display:flex; gap:10px;">
-            <div style="flex:1; background:#fff; padding:12px; border-radius:10px; box-shadow:var(--shadow); text-align:center">
-              <div style="font-weight:800">✓</div>
-              <div class="muted" style="font-size:13px">ID Verified</div>
-            </div>
-            <div style="flex:1; background:#fff; padding:12px; border-radius:10px; box-shadow:var(--shadow); text-align:center">
-              <div style="font-weight:800">⏱</div>
-              <div class="muted" style="font-size:13px">Avg 10 min</div>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <!-- MAIN: form + summary -->
-    <div class="main-grid">
-      <!-- FORM -->
-      <form id="notaryForm" class="card reveal" enctype="multipart/form-data" aria-label="Notarization form">
-        <h3 style="margin:0 0 10px 0; font-size:20px;">Start your notarization</h3>
-        <p class="small muted" style="margin-top:6px">Complete the form and pay — we’ll connect you to a licensed notary.</p>
-
-        <label class="field">
-          <div style="font-weight:600;margin-bottom:6px">Full name</div>
-          <input type="text" name="fullName" required placeholder="First Last">
-        </label>
-
-        <label class="field">
-          <div style="font-weight:600;margin-bottom:6px">Email</div>
-          <input type="email" name="email" required placeholder="you@example.com">
-        </label>
-
-        <label class="field">
-          <div style="font-weight:600;margin-bottom:6px">Phone</div>
-          <input type="tel" name="phone" placeholder="(555) 555-5555">
-        </label>
-
-        <label class="field">
-          <div style="font-weight:600;margin-bottom:6px">Upload documents</div>
-          <input id="docsInput" type="file" name="documents" accept=".pdf,.doc,.docx" multiple required>
-          <div id="fileHelp" class="small muted">Max 10 MB per file. 1 document included in base price.</div>
-        </label>
-
-        <label class="field">
-          <div style="font-weight:600;margin-bottom:6px">Upload government ID</div>
-          <input type="file" name="idVerification" accept="image/*,.pdf" required>
-          <div class="small muted">Driver's license, passport, or state ID. Clear photo required.</div>
-        </label>
-
-        <label class="field">
-          <div style="font-weight:600;margin-bottom:6px">Preferred session time (optional)</div>
-          <input type="datetime-local" name="sessionTime">
-          <div class="small muted">Leave blank for the next available notary.</div>
-        </label>
-
-        <div style="display:flex; gap:12px; align-items:center; margin-top:6px;">
-          <div style="flex:1;">
-            <div style="font-weight:600; margin-bottom:6px">Number of signers</div>
-            <div class="stepper" aria-hidden>
-              <button type="button" id="decSigner">−</button>
-              <input id="signerCountInput" type="number" name="signers" value="1" min="1" style="width:66px; text-align:center; border-radius:8px; padding:8px; border:1px solid #e6eef6;">
-              <button type="button" id="incSigner">+</button>
-            </div>
-            <div class="small muted">Count how many separate signers will appear.</div>
-          </div>
-
-          <div style="width:1px; background:#eef2f7; height:72px;"></div>
-
-          <div style="flex:1;">
-            <div style="font-weight:600; margin-bottom:6px">Documents</div>
-            <div id="docCountDisplay" style="font-weight:700;">1</div>
-            <div class="small muted">Files selected</div>
-          </div>
-        </div>
-
-        <div style="margin-top:14px; display:flex; gap:12px; align-items:center; justify-content:space-between">
-          <div>
-            <div style="font-size:13px; color:var(--muted)">Total price</div>
-            <div style="font-size:22px; font-weight:800; color:var(--accent);" id="totalPrice">$39</div>
-            <div class="small muted">Base $39 + $5 per extra signer/document</div>
-          </div>
-
-          <div style="min-width:240px;">
-            <!-- PayPal renders here -->
-            <div id="paypal-button-container" aria-live="polite"></div>
-          </div>
-        </div>
-
-        <div id="statusMsg" style="margin-top:12px; font-size:13px; color:#0f172a; display:none"></div>
+        <div id="paypal-button-container"></div>
+        <div id="statusMsg" class="text-center text-sm mt-2"></div>
       </form>
+    </div>
+  </section>
 
-      <!-- SUMMARY / TRUST / TESTIMONIALS -->
-      <aside class="reveal">
-        <div style="display:flex; flex-direction:column; gap:14px;">
-          <div class="price-card">
-            <div style="font-weight:700">What’s included</div>
-            <ul style="margin-top:8px; color:var(--muted); padding-left:16px;">
-              <li>Secure file handling & encrypted connection</li>
-              <li>Licensed U.S. notary for the session</li>
-              <li>Record of notarization & downloadable notarized document</li>
-            </ul>
-          </div>
-
-          <div style="background:var(--card); padding:12px; border-radius:12px; box-shadow:var(--shadow);">
-            <div style="font-weight:700; margin-bottom:8px">Real customers</div>
-            <div class="test-grid">
-              <div class="testimonial">
-                <div style="display:flex; gap:10px; align-items:center;">
-                  <div class="avatar">SM</div>
-                  <div>
-                    <div style="font-weight:700">Sarah M.</div>
-                    <div class="muted" style="font-size:13px">Verified customer</div>
-                  </div>
-                </div>
-                <p class="small muted" style="margin-top:8px">Fast and professional. The notary was helpful and the whole session took 7 minutes.</p>
-              </div>
-              <div class="testimonial">
-                <div style="display:flex; gap:10px; align-items:center;">
-                  <div class="avatar" style="background:linear-gradient(135deg,#7c3aed,#06b6d4)">JR</div>
-                  <div>
-                    <div style="font-weight:700">James R.</div>
-                    <div class="muted" style="font-size:13px">Verified customer</div>
-                  </div>
-                </div>
-                <p class="small muted" style="margin-top:8px">Clear pricing and easy scheduling vs other services.</p>
-              </div>
-              <div class="testimonial">
-                <div style="display:flex; gap:10px; align-items:center;">
-                  <div class="avatar" style="background:linear-gradient(135deg,#ff7aa2,#ffb86b)">AT</div>
-                  <div>
-                    <div style="font-weight:700">Alicia T.</div>
-                    <div class="muted" style="font-size:13px">Verified customer</div>
-                  </div>
-                </div>
-                <p class="small muted" style="margin-top:8px">Legit and fast — saved me a trip to the notary office.</p>
-              </div>
-            </div>
-          </div>
-
-          <div style="background:var(--card); padding:12px; border-radius:12px; box-shadow:var(--shadow);">
-            <div style="font-weight:700; margin-bottom:8px">Have questions?</div>
-            <div class="small muted">We’re available at <a href="mailto:info@directnotaryaz.com">info@directnotaryaz.com</a> — or use the live session link after payment.</div>
-          </div>
+  <!-- FAQ -->
+  <section id="faq" class="py-16">
+    <div class="max-w-4xl mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h3>
+      <div class="space-y-6">
+        <div>
+          <h4 class="font-semibold">Is this legal in all 50 states?</h4>
+          <p>Yes. Remote Online Notarization (RON) is legally recognized nationwide.</p>
         </div>
-      </aside>
-    </div>
-
-    <!-- FAQ -->
-    <section style="margin-top:28px;">
-      <div class="card reveal" style="padding:18px;">
-        <h3 style="margin:0 0 10px 0; font-size:18px">Frequently asked</h3>
-        <details style="margin-top:8px; padding:8px 0"><summary style="font-weight:700">Is online notarization legal?</summary><div class="small muted" style="margin-top:6px">Yes — Notarizations done through licensed RON providers are legally valid under UETA/E-SIGN across the US.</div></details>
-        <details style="margin-top:8px; padding:8px 0"><summary style="font-weight:700">What ID is accepted?</summary><div class="small muted" style="margin-top:6px">Driver's license, state ID, passport. Photos must be clear.</div></details>
+        <div>
+          <h4 class="font-semibold">How long does it take?</h4>
+          <p>Most notarizations are completed in under 10 minutes.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold">What documents can I notarize?</h4>
+          <p>Wills, deeds, powers of attorney, affidavits, business documents, and more.</p>
+        </div>
       </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div style="display:flex; justify-content:space-between; gap:10px; align-items:center; flex-wrap:wrap">
-        <div>© <span id="yr"></span> Direct Notary LLC</div>
-        <div class="muted">Privacy • Terms • Powered by Notarize (integration)</div>
-      </div>
-    </footer>
-
-    <!-- mobile CTA -->
-    <div class="mobile-cta">
-      <a href="#form" class="btn" style="width:100%; border-radius:12px">Start Notarization</a>
     </div>
-  </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-6 text-center text-sm">
+    <p>&copy; <span id="year"></span> Direct Notary LLC. All rights reserved.</p>
+    <p><a href="#" class="underline">Privacy Policy</a> | <a href="#" class="underline">Terms of Service</a></p>
+  </footer>
 
   <script>
-    // small helpers and UX wiring
-    (function(){
-      const base = 39, extra = 5;
-      const docsInput = document.getElementById('docsInput');
-      const docCountDisplay = document.getElementById('docCountDisplay');
-      const signerInput = document.getElementById('signerCountInput');
-      const decSigner = document.getElementById('decSigner');
-      const incSigner = document.getElementById('incSigner');
-      const totalPriceEl = document.getElementById('totalPrice');
-      const headerPrice = document.getElementById('headerPrice');
-      const fileHelp = document.getElementById('fileHelp');
-      const statusMsg = document.getElementById('statusMsg');
+    // Price calculation
+    const basePrice = 39, extra = 5;
+    const priceEl = document.getElementById('price');
+    const docsInput = document.getElementById('docs');
+    const signersInput = document.getElementById('signers');
 
-      function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+    function updatePrice() {
+      const docs = docsInput.files.length || 1;
+      const signers = parseInt(signersInput.value) || 1;
+      const total = basePrice + extra * ((docs - 1) + (signers - 1));
+      priceEl.textContent = `$${total}`;
+      return total;
+    }
 
-      function compute(){
-        const docs = Math.max(1, (docsInput && docsInput.files) ? docsInput.files.length : 1);
-        let signers = parseInt(signerInput.value) || 1;
-        signers = clamp(signers, 1, 20);
-        docCountDisplay.textContent = docs;
-        const total = base + extra * ((docs - 1) + (signers - 1));
-        totalPriceEl.textContent = '$' + total.toFixed(2);
-        headerPrice.textContent = '$' + total.toFixed(2);
-        return total.toFixed(2);
-      }
+    docsInput.addEventListener('change', updatePrice);
+    signersInput.addEventListener('input', updatePrice);
 
-      // event listeners
-      if(docsInput){
-        docsInput.addEventListener('change', ()=> {
-          compute();
-          // quick filesize check
-          const tooLarge = Array.from(docsInput.files).some(f => f.size > 10 * 1024 * 1024);
-          fileHelp.textContent = tooLarge ? 'One or more files exceed 10 MB. Please compress or split.' : 'Max 10 MB per file. 1 document included in base price.';
+    // PayPal Buttons
+    paypal.Buttons({
+      createOrder: (data, actions) => {
+        return actions.order.create({
+          purchase_units: [{ amount: { value: updatePrice().toString() } }]
+        });
+      },
+      onApprove: (data, actions) => {
+        return actions.order.capture().then(details => {
+          document.getElementById('statusMsg').textContent = 'Payment received! Starting notarization...';
+          const fd = new FormData(document.getElementById('notaryForm'));
+          fd.append('paypalOrderID', data.orderID);
+
+          fetch('/api/initiate', { method:'POST', body: fd })
+            .then(r=>r.json())
+            .then(d=>{
+              if(d.success){
+                document.getElementById('statusMsg').textContent = 'Notarization scheduled! Check your email for session details.';
+                if(d.sessionUrl){
+                  const a = document.createElement('a');
+                  a.href = d.sessionUrl;
+                  a.textContent = ' Join session';
+                  a.target="_blank";
+                  document.getElementById('statusMsg').appendChild(a);
+                }
+              } else {
+                document.getElementById('statusMsg').textContent = 'Payment OK, but error starting notarization.';
+              }
+            }).catch(err=>console.error(err));
         });
       }
-      decSigner?.addEventListener('click', ()=> { signerInput.value = Math.max(1, (parseInt(signerInput.value)||1)-1); compute(); });
-      incSigner?.addEventListener('click', ()=> { signerInput.value = (parseInt(signerInput.value)||1)+1; compute(); });
-      signerInput?.addEventListener('input', compute);
+    }).render('#paypal-button-container');
 
-      // PayPal Buttons (render after SDK loads)
-      function renderPaypal(){
-        if(!window.paypal) return setTimeout(renderPaypal, 200);
-        paypal.Buttons({
-          style:{shape:'rect', color:'blue', layout:'vertical', label:'pay'},
-          createOrder: function(data, actions){
-            const amount = compute();
-            return actions.order.create({ purchase_units:[{ amount:{ value: amount } }] });
-          },
-          onApprove: function(data, actions){
-            return actions.order.capture().then(function(details){
-              statusMsg.style.display = 'block';
-              statusMsg.textContent = 'Payment received. Initiating notarization session...';
-              // gather form data and send to backend
-              const form = document.getElementById('notaryForm');
-              const fd = new FormData(form);
-              fd.append('paypalOrderId', data.orderID);
-              // add a little UI lock
-              const btns = document.querySelectorAll('button'); btns.forEach(b=>b.disabled=true);
-              fetch('/api/initiate', { method:'POST', body: fd })
-                .then(r => r.json())
-                .then(d => {
-                  if(d && d.success){
-                    statusMsg.textContent = 'Notarization scheduled. Check your email for session details.';
-                    // optionally show link if backend returned session link
-                    if(d.sessionUrl){
-                      const a = document.createElement('a'); a.href = d.sessionUrl; a.textContent = 'Join session'; a.target='_blank';
-                      statusMsg.appendChild(document.createTextNode(' ')); statusMsg.appendChild(a);
-                    }
-                  } else {
-                    statusMsg.textContent = 'Payment OK — but we had trouble starting the notarization. We have been notified and will follow up by email.';
-                    console.error('initiate error', d);
-                  }
-                })
-                .catch(err => {
-                  statusMsg.textContent = 'Error contacting server — please email support@directnotaryaz.com';
-                  console.error(err);
-                })
-                .finally(()=> {
-                  btns.forEach(b=>b.disabled=false);
-                });
-            });
-          },
-          onError: function(err){
-            statusMsg.style.display = 'block';
-            statusMsg.textContent = 'Payment failed or was cancelled. Please try again.';
-            console.error(err);
-          }
-        }).render('#paypal-button-container');
-      }
-      renderPaypal();
-
-      // reveal animations
-      document.querySelectorAll('.reveal').forEach(el => {
-        setTimeout(()=> el.classList.add('show'), 120);
-      });
-
-      // year
-      document.getElementById('yr').textContent = new Date().getFullYear();
-
-      // initial compute
-      compute();
-    })();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
